@@ -1,0 +1,1771 @@
+$schema: http://json-schema.org/draft-04/schema#
+additionalProperties: false
+definitions:
+  .Document:
+    $ref: '#/definitions/Document'
+  AccountIdentification4Choice__1:
+    additionalProperties: false
+    description: |-
+      AccountIdentification4Choice__1
+      Specifies the unique identification of an account as assigned by the account servicer.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      IBAN:
+        additionalProperties: false
+        description: |-
+          IBAN
+          International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/IBAN2007Identifier'
+        type: object
+      Othr:
+        $ref: '#/definitions/GenericAccountIdentification1__1'
+        description: |-
+          Other
+          Unique identification of an account, as assigned by the account servicer, using an identification scheme.
+    type: object
+  AccountIdentification4Choice__2:
+    additionalProperties: false
+    description: |-
+      AccountIdentification4Choice__2
+      Specifies the unique identification of an account as assigned by the account servicer.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      IBAN:
+        additionalProperties: false
+        description: |-
+          IBAN
+          International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/IBAN2007Identifier'
+        type: object
+      Othr:
+        $ref: '#/definitions/GenericAccountIdentification1__2'
+        description: |-
+          Other
+          Unique identification of an account, as assigned by the account servicer, using an identification scheme.
+    type: object
+  AccountSchemeName1Choice__1:
+    additionalProperties: false
+    description: |-
+      AccountSchemeName1Choice__1
+      Sets of elements to identify a name of the identification scheme.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Cd:
+        additionalProperties: false
+        description: |-
+          Code
+          Name of the identification scheme, in a coded form as published in an external list.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/ExternalAccountIdentification1Code'
+        type: object
+      Prtry:
+        additionalProperties: false
+        description: |-
+          Proprietary
+          Name of the identification scheme, in a free text form.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text'
+        type: object
+    type: object
+  ActiveCurrencyCode_fixed:
+    description: ActiveCurrencyCode_fixed
+    enum:
+      - GBP
+    type: string
+  ActiveOrHistoricCurrencyCode:
+    description: |-
+      ActiveOrHistoricCurrencyCode
+      A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds".
+    pattern: ^([A-Z]{3,3})$
+    type: string
+  BICFIDec2014Identifier:
+    description: |-
+      BICFIDec2014Identifier
+      Code allocated to a financial institution by the ISO 9362 Registration Authority as described in ISO 9362: 2014 - "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+    pattern: ^([0-9A-Z]{4,4}[A-Z]{2,2}[0-9A-Z]{2,2}([0-9A-Z]{3,3})?)$
+    type: string
+  BranchAndFinancialInstitutionIdentification6__1:
+    additionalProperties: false
+    description: |-
+      BranchAndFinancialInstitutionIdentification6__1
+      Unique and unambiguous identification of a financial institution or a branch of a financial institution.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      FinInstnId:
+        $ref: '#/definitions/FinancialInstitutionIdentification18__1'
+        description: |-
+          FinancialInstitutionIdentification
+          Unique and unambiguous identification of a financial institution, as assigned under an internationally recognised or proprietary identification scheme.
+    required:
+      - FinInstnId
+    type: object
+  BranchAndFinancialInstitutionIdentification6__2:
+    additionalProperties: false
+    description: |-
+      BranchAndFinancialInstitutionIdentification6__2
+      Unique and unambiguous identification of a financial institution or a branch of a financial institution.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      FinInstnId:
+        $ref: '#/definitions/FinancialInstitutionIdentification18__2'
+        description: |-
+          FinancialInstitutionIdentification
+          Unique and unambiguous identification of a financial institution, as assigned under an internationally recognised or proprietary identification scheme.
+    required:
+      - FinInstnId
+    type: object
+  CBPR_RestrictedFINXMax140Text:
+    description: |-
+      CBPR_RestrictedFINXMax140Text
+      Specifies a character string with a minimum length of 1, and a maximum length of 140 characters, and limited to character set X, that is, 0-9 a-z A-Z / - ? : ( ) . , ' + .
+    maxLength: 140
+    minLength: 1
+    pattern: ^([ '-\)\+-\:\?A-Za-z]+)$
+    type: string
+  CBPR_RestrictedFINXMax140Text_Extended:
+    description: "CBPR_RestrictedFINXMax140Text_Extended\nSpecifies a character string with a minimum length of 1, and a maximum length of 140 characters, and limited to character set X, that is, 0-9 a-z A-Z / - ? : ( ) . , ' + . that is extended to support the following additional characters !#$%&*=^_`{|}~\";<>@[\\]\r"
+    maxLength: 140
+    minLength: 1
+    pattern: ^([ -~]+)$
+    type: string
+  CBPR_RestrictedFINXMax16Text:
+    description: |-
+      CBPR_RestrictedFINXMax16Text
+      Specifies a character string with a minimum length of 1, and a maximum length of 16 characters, and limited to character set X, that is, 0-9 a-z A-Z / - ? : ( ) . , ' + .
+    maxLength: 16
+    minLength: 1
+    pattern: ^([ '-\)\+-\:\?A-Za-z]+)$
+    type: string
+  CBPR_RestrictedFINXMax16Text_Extended:
+    description: |-
+      CBPR_RestrictedFINXMax16Text_Extended
+      Specifies a character string with a minimum length of 1, and a maximum length of 16 characters, and limited to character set X, that is, 0-9 a-z A-Z / - ? : ( ) . , ' + . that is extended to support the following additional characters !#$%&*=^_`{|}~";<>@[\]
+    maxLength: 16
+    minLength: 1
+    pattern: ^([ -~]+)$
+    type: string
+  CBPR_RestrictedFINXMax320Text_Extended:
+    description: "CBPR_RestrictedFINXMax320Text_Extended\nSpecifies a character string with a minimum length of 1, and a maximum length of 320 characters, and limited to character set X, that is, 0-9 a-z A-Z / - ? : ( ) . , ' + . that is extended to support the following additional characters !#$%&*=^_`{|}~\";<>@[\\]\r"
+    maxLength: 320
+    minLength: 1
+    pattern: ^([ -~]+)$
+    type: string
+  CBPR_RestrictedFINXMax34Text:
+    description: |-
+      CBPR_RestrictedFINXMax34Text
+      Specifies a character string with a minimum length of 1, and a maximum length of 34 characters, and limited to character set X, that is, 0-9 a-z A-Z / - ? : ( ) . , ' + . and disable the use of slash "/" at the beginning and end of line and double slash "//" within the line.
+    maxLength: 34
+    minLength: 1
+    pattern: ^(([ '-\)\+-\.0-\:\?A-Za-z]([ '-\)\+-\.0-\:\?A-Za-z]*(/[ '-\)\+-\.0-\:\?A-Za-z])?)*))$
+    type: string
+  CBPR_RestrictedFINXMax35Text:
+    description: |-
+      CBPR_RestrictedFINXMax35Text
+      Specifies a character string with a minimum length of 1, and a maximum length of 35 characters, and limited to character set X, that is, 0-9 a-z A-Z / - ? : ( ) . , ‘ + .
+    maxLength: 35
+    minLength: 1
+    pattern: ^([ '-\)\+-\:\?A-Za-z]+)$
+    type: string
+  CBPR_RestrictedFINXMax35Text_Extended:
+    description: "CBPR_RestrictedFINXMax35Text_Extended\nSpecifies a character string with a minimum length of 1, and a maximum length of 35 characters, and limited to character set X, that is, 0-9 a-z A-Z / - ? : ( ) . , ' + . that is extended to support the following additional characters !#$%&*=^_`{|}~\";<>@[\\]\r"
+    maxLength: 35
+    minLength: 1
+    pattern: ^([ -~]+)$
+    type: string
+  CBPR_RestrictedFINXMax70Text:
+    description: |-
+      CBPR_RestrictedFINXMax70Text
+      Specifies a character string with a minimum length of 1, and a maximum length of 70 characters, and limited to character set X, that is, 0-9 a-z A-Z / - ? : ( ) . , ' + .
+    maxLength: 70
+    minLength: 1
+    pattern: ^([ '-\)\+-\:\?A-Za-z]+)$
+    type: string
+  CBPR_RestrictedFINXMax70Text_Extended:
+    description: |-
+      CBPR_RestrictedFINXMax70Text_Extended
+      Specifies a character string with a minimum length of 1, and a maximum length of 70 characters, and limited to character set X, that is, 0-9 a-z A-Z / - ? : ( ) . , ' + . that is extended to support the following additional characters !#$%&*=^_`{|}~";<>@[\]
+    maxLength: 70
+    minLength: 1
+    pattern: ^([ -~]+)$
+    type: string
+  CashAccount38__1:
+    additionalProperties: false
+    description: |-
+      CashAccount38__1
+      Provides the details to identify an account.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Ccy:
+        additionalProperties: false
+        description: |-
+          Currency
+          Identification of the currency in which the account is held. 
+
+          Usage: Currency should only be used in case one and the same account number covers several currencies
+          and the initiating party needs to identify which currency needs to be used for settlement on the account.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/ActiveOrHistoricCurrencyCode'
+        type: object
+      Id:
+        $ref: '#/definitions/AccountIdentification4Choice__1'
+        description: |-
+          Identification
+          Unique and unambiguous identification for the account between the account owner and the account servicer.
+      Nm:
+        additionalProperties: false
+        description: |-
+          Name
+          Name of the account, as assigned by the account servicing institution, in agreement with the account owner in order to provide an additional means of identification of the account.
+
+          Usage: The account name is different from the account owner name. The account name is used in certain user communities to provide a means of identifying the account, in addition to the account owner's identity and the account number.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax70Text'
+        type: object
+      Prxy:
+        $ref: '#/definitions/ProxyAccountIdentification1__1'
+        description: |-
+          Proxy
+          Specifies an alternate assumed name for the identification of the account. 
+      Tp:
+        $ref: '#/definitions/CashAccountType2Choice__1'
+        description: |-
+          Type
+          Specifies the nature, or use of the account.
+    required:
+      - Id
+    type: object
+  CashAccount38__2:
+    additionalProperties: false
+    description: |-
+      CashAccount38__2
+      Provides the details to identify an account.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Ccy:
+        additionalProperties: false
+        description: |-
+          Currency
+          Identification of the currency in which the account is held. 
+
+          Usage: Currency should only be used in case one and the same account number covers several currencies
+          and the initiating party needs to identify which currency needs to be used for settlement on the account.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/ActiveOrHistoricCurrencyCode'
+        type: object
+      Id:
+        $ref: '#/definitions/AccountIdentification4Choice__2'
+        description: |-
+          Identification
+          Unique and unambiguous identification for the account between the account owner and the account servicer.
+      Nm:
+        additionalProperties: false
+        description: |-
+          Name
+          Name of the account, as assigned by the account servicing institution, in agreement with the account owner in order to provide an additional means of identification of the account.
+
+          Usage: The account name is different from the account owner name. The account name is used in certain user communities to provide a means of identifying the account, in addition to the account owner's identity and the account number.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax70Text'
+        type: object
+      Prxy:
+        $ref: '#/definitions/ProxyAccountIdentification1__1'
+        description: |-
+          Proxy
+          Specifies an alternate assumed name for the identification of the account. 
+      Tp:
+        $ref: '#/definitions/CashAccountType2Choice__1'
+        description: |-
+          Type
+          Specifies the nature, or use of the account.
+    required:
+      - Id
+    type: object
+  CashAccountType2Choice__1:
+    additionalProperties: false
+    description: |-
+      CashAccountType2Choice__1
+      Nature or use of the account.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Cd:
+        additionalProperties: false
+        description: |-
+          Code
+          Account type, in a coded form.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/ExternalCashAccountType1Code'
+        type: object
+      Prtry:
+        additionalProperties: false
+        description: |-
+          Proprietary
+          Nature or use of the account in a proprietary form.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text'
+        type: object
+    type: object
+  CategoryPurpose1Choice__1:
+    additionalProperties: false
+    description: |-
+      CategoryPurpose1Choice__1
+      Specifies the high level purpose of the instruction based on a set of pre-defined categories.
+      Usage: This is used by the initiating party to provide information concerning the processing of the payment. It is likely to trigger special processing by any of the agents involved in the payment chain.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Cd:
+        additionalProperties: false
+        description: |-
+          Code
+          Category purpose, as published in an external category purpose code list.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/ExternalCategoryPurpose1Code'
+        type: object
+      Prtry:
+        additionalProperties: false
+        description: |-
+          Proprietary
+          Category purpose, in a proprietary form.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text'
+        type: object
+    type: object
+  ClearingSystemIdentification2Choice__1:
+    additionalProperties: false
+    description: |-
+      ClearingSystemIdentification2Choice__1
+      Choice of a clearing system identifier.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Cd:
+        additionalProperties: false
+        description: |-
+          Code
+          Identification of a clearing system, in a coded form as published in an external list.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/ExternalClearingSystemIdentification1Code'
+        type: object
+    type: object
+  ClearingSystemIdentification3Choice__1:
+    additionalProperties: false
+    description: |-
+      ClearingSystemIdentification3Choice__1
+      Specifies the clearing system identification.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Cd:
+        additionalProperties: false
+        description: |-
+          Code
+          Infrastructure through which the payment instruction is processed, as published in an external clearing system identification code list.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/ExternalCashClearingSystem1Code_fixed'
+        type: object
+    type: object
+  ClearingSystemMemberIdentification2__1:
+    additionalProperties: false
+    description: |-
+      ClearingSystemMemberIdentification2__1
+      Unique identification, as assigned by a clearing system, to unambiguously identify a member of the clearing system.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      ClrSysId:
+        $ref: '#/definitions/ClearingSystemIdentification2Choice__1'
+        description: |-
+          ClearingSystemIdentification
+          Specification of a pre-agreed offering between clearing agents or the channel through which the payment instruction is processed.
+      MmbId:
+        additionalProperties: false
+        description: |-
+          MemberIdentification
+          Identification of a member of a clearing system.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/HVPSPlus_RestrictedFINXMax28Text'
+        type: object
+    required:
+      - ClrSysId
+      - MmbId
+    type: object
+  CountryCode:
+    description: |-
+      CountryCode
+      Code to identify a country, a dependency, or another area of particular geopolitical interest, on the basis of country names obtained from the United Nations (ISO 3166, Alpha-2 code).
+    pattern: ^([A-Z]{2,2})$
+    type: string
+  CreditTransferTransaction36__1:
+    additionalProperties: false
+    description: |-
+      CreditTransferTransaction36__1
+      Provide further details specific to the individual transaction(s) included in the message.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Cdtr:
+        $ref: '#/definitions/BranchAndFinancialInstitutionIdentification6__1'
+        description: |-
+          Creditor
+          Financial institution that receives an amount of money from the financial institutional debtor.
+      CdtrAcct:
+        $ref: '#/definitions/CashAccount38__1'
+        description: |-
+          CreditorAccount
+          Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.
+      CdtrAgt:
+        $ref: '#/definitions/BranchAndFinancialInstitutionIdentification6__1'
+        description: |-
+          CreditorAgent
+          Financial institution servicing an account for the creditor.
+      CdtrAgtAcct:
+        $ref: '#/definitions/CashAccount38__1'
+        description: |-
+          CreditorAgentAccount
+          Unambiguous identification of the account of the creditor agent at its servicing agent to which a credit entry will be made as a result of the payment transaction.
+      Dbtr:
+        $ref: '#/definitions/BranchAndFinancialInstitutionIdentification6__1'
+        description: |-
+          Debtor
+          Financial institution that owes an amount of money to the (ultimate) financial institutional creditor.
+      DbtrAcct:
+        $ref: '#/definitions/CashAccount38__2'
+        description: |-
+          DebtorAccount
+          Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction.
+      DbtrAgt:
+        $ref: '#/definitions/BranchAndFinancialInstitutionIdentification6__1'
+        description: |-
+          DebtorAgent
+          Financial institution servicing an account for the debtor.
+      DbtrAgtAcct:
+        $ref: '#/definitions/CashAccount38__1'
+        description: |-
+          DebtorAgentAccount
+          Unambiguous identification of the account of the debtor agent at its servicing agent in the payment chain.
+      InstdAgt:
+        $ref: '#/definitions/BranchAndFinancialInstitutionIdentification6__2'
+        description: |-
+          InstructedAgent
+          Agent that is instructed by the previous party in the chain to carry out the (set of) instruction(s).
+      InstgAgt:
+        $ref: '#/definitions/BranchAndFinancialInstitutionIdentification6__2'
+        description: |-
+          InstructingAgent
+          Agent that instructs the next party in the chain to carry out the (set of) instruction(s).
+      InstrForCdtrAgt:
+        items:
+          $ref: '#/definitions/InstructionForCreditorAgent2__1'
+          description: |-
+            InstructionForCreditorAgent
+            Further information related to the processing of the payment instruction, provided by the initiating party, and intended for the creditor agent.
+        type: array
+      InstrForNxtAgt:
+        items:
+          $ref: '#/definitions/InstructionForNextAgent1__1'
+          description: |-
+            InstructionForNextAgent
+            Further information related to the processing of the payment instruction that may need to be acted upon by the next agent. 
+
+            Usage: The next agent may not be the creditor agent.
+            The instruction can relate to a level of service, can be an instruction that has to be executed by the agent, or can be information required by the next agent.
+        type: array
+      IntrBkSttlmAmt:
+        $ref: '#/definitions/RestrictedFINActiveCurrencyAndAmount'
+        description: |-
+          InterbankSettlementAmount
+          Amount of money moved between the instructing agent and the instructed agent.
+      IntrBkSttlmDt:
+        additionalProperties: false
+        description: |-
+          InterbankSettlementDate
+          Date on which the amount of money ceases to be available to the agent that owes it and when the amount of money becomes available to the agent to which it is due.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/ISODate'
+        type: object
+      IntrmyAgt1:
+        $ref: '#/definitions/BranchAndFinancialInstitutionIdentification6__1'
+        description: |-
+          IntermediaryAgent1
+          Agent between the debtor's agent and the creditor's agent.
+
+          Usage: If more than one intermediary agent is present, then IntermediaryAgent1 identifies the agent between the DebtorAgent and the IntermediaryAgent2.
+      IntrmyAgt1Acct:
+        $ref: '#/definitions/CashAccount38__1'
+        description: |-
+          IntermediaryAgent1Account
+          Unambiguous identification of the account of the intermediary agent 1 at its servicing agent in the payment chain.
+      IntrmyAgt2:
+        $ref: '#/definitions/BranchAndFinancialInstitutionIdentification6__1'
+        description: |-
+          IntermediaryAgent2
+          Agent between the debtor's agent and the creditor's agent.
+
+          Usage: If more than two intermediary agents are present, then IntermediaryAgent2 identifies the agent between the IntermediaryAgent1 and the IntermediaryAgent3.
+      IntrmyAgt2Acct:
+        $ref: '#/definitions/CashAccount38__1'
+        description: |-
+          IntermediaryAgent2Account
+          Unambiguous identification of the account of the intermediary agent 2 at its servicing agent in the payment chain.
+      IntrmyAgt3:
+        $ref: '#/definitions/BranchAndFinancialInstitutionIdentification6__1'
+        description: |-
+          IntermediaryAgent3
+          Agent between the debtor's agent and the creditor's agent.
+
+          Usage: If IntermediaryAgent3 is present, then it identifies the agent between the IntermediaryAgent 2 and the CreditorAgent.
+      IntrmyAgt3Acct:
+        $ref: '#/definitions/CashAccount38__1'
+        description: |-
+          IntermediaryAgent3Account
+          Unambiguous identification of the account of the intermediary agent 3 at its servicing agent in the payment chain.
+      PmtId:
+        $ref: '#/definitions/PaymentIdentification7__1'
+        description: |-
+          PaymentIdentification
+          Set of elements used to reference a payment instruction.
+      PmtTpInf:
+        $ref: '#/definitions/PaymentTypeInformation28__1'
+        description: |-
+          PaymentTypeInformation
+          Set of elements used to further specify the type of transaction.
+      PrvsInstgAgt1:
+        $ref: '#/definitions/BranchAndFinancialInstitutionIdentification6__1'
+        description: |-
+          PreviousInstructingAgent1
+          Agent immediately prior to the instructing agent.
+      PrvsInstgAgt1Acct:
+        $ref: '#/definitions/CashAccount38__1'
+        description: |-
+          PreviousInstructingAgent1Account
+          Unambiguous identification of the account of the previous instructing agent at its servicing agent in the payment chain.
+      PrvsInstgAgt2:
+        $ref: '#/definitions/BranchAndFinancialInstitutionIdentification6__1'
+        description: |-
+          PreviousInstructingAgent2
+          Agent immediately prior to the instructing agent.
+      PrvsInstgAgt2Acct:
+        $ref: '#/definitions/CashAccount38__1'
+        description: |-
+          PreviousInstructingAgent2Account
+          Unambiguous identification of the account of the previous instructing agent at its servicing agent in the payment chain.
+      PrvsInstgAgt3:
+        $ref: '#/definitions/BranchAndFinancialInstitutionIdentification6__1'
+        description: |-
+          PreviousInstructingAgent3
+          Agent immediately prior to the instructing agent.
+      PrvsInstgAgt3Acct:
+        $ref: '#/definitions/CashAccount38__1'
+        description: |-
+          PreviousInstructingAgent3Account
+          Unambiguous identification of the account of the previous instructing agent at its servicing agent in the payment chain.
+      Purp:
+        $ref: '#/definitions/Purpose2Choice__1'
+        description: |-
+          Purpose
+          Underlying reason for the payment transaction.
+          Usage: Purpose is used by the end-customers, that is initiating party, (ultimate) debtor, (ultimate) creditor to provide information concerning the nature of the payment. Purpose is a content element, which is not used for processing by any of the agents involved in the payment chain.
+      RmtInf:
+        $ref: '#/definitions/RemittanceInformation2__1'
+        description: |-
+          RemittanceInformation
+          Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system.
+      SttlmPrty:
+        additionalProperties: false
+        description: |-
+          SettlementPriority
+          Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the settlement instruction.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/Priority3Code'
+        type: object
+      SttlmTmReq:
+        $ref: '#/definitions/SettlementTimeRequest2__1'
+        description: |-
+          SettlementTimeRequest
+          Provides information on the requested settlement time(s) of the payment instruction.
+    required:
+      - Cdtr
+      - Dbtr
+      - InstdAgt
+      - InstgAgt
+      - IntrBkSttlmAmt
+      - IntrBkSttlmDt
+      - PmtId
+    type: object
+  Document:
+    additionalProperties: false
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      FICdtTrf:
+        $ref: '#/definitions/FinancialInstitutionCreditTransferV08'
+    required:
+      - FICdtTrf
+    type: object
+  Exact1NumericText_fixed:
+    description: Exact1NumericText_fixed
+    enum:
+      - '1'
+    type: string
+  ExternalAccountIdentification1Code:
+    description: "ExternalAccountIdentification1Code\nSpecifies the external account identification scheme name code in the format of character string with a maximum length of 4 characters.\r\nThe list of valid codes is an external code list published separately.\r\nExternal code sets can be downloaded from www.iso20022.org."
+    maxLength: 4
+    minLength: 1
+    type: string
+  ExternalCashAccountType1Code:
+    description: "ExternalCashAccountType1Code\nSpecifies the nature, or use, of the cash account in the format of character string with a maximum length of 4 characters.\r\nThe list of valid codes is an external code list published separately.\r\nExternal code sets can be downloaded from www.iso20022.org."
+    maxLength: 4
+    minLength: 1
+    type: string
+  ExternalCashClearingSystem1Code_fixed:
+    description: ExternalCashClearingSystem1Code_fixed
+    enum:
+      - STG
+    type: string
+  ExternalCategoryPurpose1Code:
+    description: "ExternalCategoryPurpose1Code\nSpecifies the category purpose, as published in an external category purpose code list.\r\nExternal code sets can be downloaded from www.iso20022.org."
+    maxLength: 4
+    minLength: 1
+    type: string
+  ExternalClearingSystemIdentification1Code:
+    description: "ExternalClearingSystemIdentification1Code\nSpecifies the clearing system identification code, as published in an external clearing system identification code list.\r\nExternal code sets can be downloaded from www.iso20022.org."
+    maxLength: 5
+    minLength: 1
+    type: string
+  ExternalLocalInstrument1Code:
+    description: "ExternalLocalInstrument1Code\nSpecifies the external local instrument code in the format of character string with a maximum length of 35 characters.\r\nThe list of valid codes is an external code list published separately.\r\nExternal code sets can be downloaded from www.iso20022.org."
+    maxLength: 35
+    minLength: 1
+    type: string
+  ExternalProxyAccountType1Code:
+    description: "ExternalProxyAccountType1Code\nSpecifies the external proxy account type code, as published in the proxy account type external code set.\r\nExternal code sets can be downloaded from www.iso20022.org."
+    maxLength: 4
+    minLength: 1
+    type: string
+  ExternalPurpose1Code:
+    description: "ExternalPurpose1Code\nSpecifies the external purpose code in the format of character string with a maximum length of 4 characters.\r\nThe list of valid codes is an external code list published separately.\r\nExternal code sets can be downloaded from www.iso20022.org."
+    maxLength: 4
+    minLength: 1
+    type: string
+  ExternalServiceLevel1Code:
+    description: "ExternalServiceLevel1Code\nSpecifies the external service level code in the format of character string with a maximum length of 4 characters.\r\nThe list of valid codes is an external code list published separately.\r\nExternal code sets can be downloaded from www.iso20022.org."
+    maxLength: 4
+    minLength: 1
+    type: string
+  FinancialInstitutionCreditTransferV08:
+    additionalProperties: false
+    description: "FinancialInstitutionCreditTransferV08\nScope\r\nThe FinancialInstitutionCreditTransfer message is sent by a debtor financial institution to a creditor financial institution, directly or through other agents and/or a payment clearing and settlement system.\r\nIt is used to move funds from a debtor account to a creditor, where both debtor and creditor are financial institutions.\r\nUsage\r\nThe FinancialInstitutionCreditTransfer message is exchanged between agents and can contain one or more credit transfer instructions where debtor and creditor are both financial institutions.\r\nThe FinancialInstitutionCreditTransfer message does not allow for grouping: a CreditTransferTransactionInformation block must be present for each credit transfer transaction.\r\nThe FinancialInstitutionCreditTransfer message can be used in domestic and cross-border scenarios."
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      CdtTrfTxInf:
+        $ref: '#/definitions/CreditTransferTransaction36__1'
+        description: |-
+          CreditTransferTransactionInformation
+          Set of elements providing information specific to the individual credit transfer(s).
+      GrpHdr:
+        $ref: '#/definitions/GroupHeader93__1'
+        description: |-
+          GroupHeader
+          Set of characteristics shared by all individual transactions included in the message.
+    required:
+      - CdtTrfTxInf
+      - GrpHdr
+    type: object
+  FinancialInstitutionIdentification18__1:
+    additionalProperties: false
+    description: |-
+      FinancialInstitutionIdentification18__1
+      Specifies the details to identify a financial institution.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      BICFI:
+        additionalProperties: false
+        description: |-
+          BICFI
+          Code allocated to a financial institution by the ISO 9362 Registration Authority as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/BICFIDec2014Identifier'
+        type: object
+      ClrSysMmbId:
+        $ref: '#/definitions/ClearingSystemMemberIdentification2__1'
+        description: |-
+          ClearingSystemMemberIdentification
+          Information used to identify a member within a clearing system.
+      LEI:
+        additionalProperties: false
+        description: |-
+          LEI
+          Legal entity identifier of the financial institution.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/LEIIdentifier'
+        type: object
+      Nm:
+        additionalProperties: false
+        description: |-
+          Name
+          Name by which an agent is known and which is usually used to identify that agent.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax140Text_Extended'
+        type: object
+      PstlAdr:
+        $ref: '#/definitions/PostalAddress24__1'
+        description: |-
+          PostalAddress
+          Information that locates and identifies a specific address, as defined by postal services.
+    type: object
+  FinancialInstitutionIdentification18__2:
+    additionalProperties: false
+    description: |-
+      FinancialInstitutionIdentification18__2
+      Specifies the details to identify a financial institution.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      BICFI:
+        additionalProperties: false
+        description: |-
+          BICFI
+          Code allocated to a financial institution by the ISO 9362 Registration Authority as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/BICFIDec2014Identifier'
+        type: object
+      ClrSysMmbId:
+        $ref: '#/definitions/ClearingSystemMemberIdentification2__1'
+        description: |-
+          ClearingSystemMemberIdentification
+          Information used to identify a member within a clearing system.
+      LEI:
+        additionalProperties: false
+        description: |-
+          LEI
+          Legal entity identifier of the financial institution.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/LEIIdentifier'
+        type: object
+      Nm:
+        additionalProperties: false
+        description: |-
+          Name
+          Name by which an agent is known and which is usually used to identify that agent.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax140Text_Extended'
+        type: object
+      PstlAdr:
+        $ref: '#/definitions/PostalAddress24__1'
+        description: |-
+          PostalAddress
+          Information that locates and identifies a specific address, as defined by postal services.
+    required:
+      - BICFI
+    type: object
+  GenericAccountIdentification1__1:
+    additionalProperties: false
+    description: |-
+      GenericAccountIdentification1__1
+      Information related to a generic account identification.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Id:
+        additionalProperties: false
+        description: |-
+          Identification
+          Identification assigned by an institution.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax34Text'
+        type: object
+      Issr:
+        additionalProperties: false
+        description: |-
+          Issuer
+          Entity that assigns the identification.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text'
+        type: object
+      SchmeNm:
+        $ref: '#/definitions/AccountSchemeName1Choice__1'
+        description: |-
+          SchemeName
+          Name of the identification scheme.
+    required:
+      - Id
+    type: object
+  GenericAccountIdentification1__2:
+    additionalProperties: false
+    description: |-
+      GenericAccountIdentification1__2
+      Information related to a generic account identification.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Id:
+        additionalProperties: false
+        description: |-
+          Identification
+          Identification assigned by an institution.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax34Text'
+        type: object
+      Issr:
+        additionalProperties: false
+        description: |-
+          Issuer
+          Entity that assigns the identification.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/HVPSPlus_RestrictedFINXMax35Text'
+        type: object
+      SchmeNm:
+        $ref: '#/definitions/AccountSchemeName1Choice__1'
+        description: |-
+          SchemeName
+          Name of the identification scheme.
+    required:
+      - Id
+    type: object
+  GroupHeader93__1:
+    additionalProperties: false
+    description: |-
+      GroupHeader93__1
+      Set of characteristics shared by all individual transactions included in the message.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      CreDtTm:
+        additionalProperties: false
+        description: |-
+          CreationDateTime
+          Date and time at which the message was created.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/HVPSPlus_DateTime'
+        type: object
+      MsgId:
+        additionalProperties: false
+        description: |-
+          MessageIdentification
+          Point to point reference, as assigned by the instructing party, and sent to the next party in the chain to unambiguously identify the message.
+          Usage: The instructing party has to make sure that MessageIdentification is unique per instructed party for a pre-agreed period.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text'
+        type: object
+      NbOfTxs:
+        additionalProperties: false
+        description: |-
+          NumberOfTransactions
+          Number of individual transactions contained in the message.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/Exact1NumericText_fixed'
+        type: object
+      SttlmInf:
+        $ref: '#/definitions/SettlementInstruction7__1'
+        description: |-
+          SettlementInformation
+          Specifies the details on how the settlement of the transaction(s) between the instructing agent and the instructed agent is completed.
+    required:
+      - CreDtTm
+      - MsgId
+      - NbOfTxs
+      - SttlmInf
+    type: object
+  HVPSPlus_DateTime:
+    description: |-
+      HVPSPlus_DateTime
+      HVPSPlus_DateTime
+    pattern: ^([\w\D]*(\+|\-)((0[0-9])|(1[0-3]))\:[0-5][0-9])$
+    type: string
+  HVPSPlus_RestrictedFINXMax28Text:
+    description: |-
+      HVPSPlus_RestrictedFINXMax28Text
+      Specifies a character string with a maximum length of 28 characters limited to character set X, that is, a-z A-Z / - ? : ( ) . , ' + .
+    maxLength: 28
+    minLength: 1
+    pattern: ^([ '-\)\+-\:\?A-Za-z]+)$
+    type: string
+  HVPSPlus_RestrictedFINXMax35Text:
+    description: |-
+      HVPSPlus_RestrictedFINXMax35Text
+      Specifies a character string with a maximum length of 35 characters limited to character set X, that is, a-z A-Z / - ? : ( ) . , ‘ + .
+    maxLength: 35
+    minLength: 1
+    pattern: ^([ '-\)\+-\:\?A-Za-z]+)$
+    type: string
+  HVPSPlus_Time:
+    description: |-
+      HVPSPlus_Time
+      HVPSPlus_Time
+    pattern: ^([\w\D]*(\+|\-)((0[0-9])|(1[0-3]))\:[0-5][0-9])$
+    type: string
+  IBAN2007Identifier:
+    description: |-
+      IBAN2007Identifier
+      The International Bank Account Number is a code used internationally by financial institutions to uniquely identify the account of a customer at a financial institution as described in the 2007 edition of the ISO 13616 standard "Banking and related financial services - International Bank Account Number (IBAN)" and replaced by the more recent edition of the standard.
+    pattern: ^([A-Z]{2,2}[0-9]{2,2}[0-9A-Za-z]{1,30})$
+    type: string
+  ISODate:
+    description: |-
+      ISODate
+      A particular point in the progression of time in a calendar year expressed in the YYYY-MM-DD format. This representation is defined in "XML Schema Part 2: Datatypes Second Edition - W3C Recommendation 28 October 2004" which is aligned with ISO 8601.
+    type: string
+  Instruction5Code:
+    description: |-
+      Instruction5Code
+      Specifies further instructions concerning the processing of a payment instruction, provided by the sending clearing agent to the next agent(s).
+    enum:
+      - PHOB
+      - TELB
+    type: string
+  InstructionForCreditorAgent2__1:
+    additionalProperties: false
+    description: |-
+      InstructionForCreditorAgent2__1
+      Further information related to the processing of the payment instruction that may need to be acted upon by the creditor's agent. The instruction may relate to a level of service, or may be an instruction that has to be executed by the creditor's agent, or may be information required by the creditor's agent.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Cd:
+        additionalProperties: false
+        description: |-
+          Code
+          Coded information related to the processing of the payment instruction, provided by the initiating party, and intended for the creditor's agent.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/Instruction5Code'
+        type: object
+      InstrInf:
+        additionalProperties: false
+        description: |-
+          InstructionInformation
+          Further information complementing the coded instruction or instruction to the creditor's agent that is bilaterally agreed or specific to a user community.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax140Text'
+        type: object
+    type: object
+  InstructionForNextAgent1__1:
+    additionalProperties: false
+    description: |-
+      InstructionForNextAgent1__1
+      Further information related to the processing of the payment instruction that may need to be acted upon by an other agent. The instruction may relate to a level of service, or may be an instruction that has to be executed by the creditor's agent, or may be information required by the other agent.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      InstrInf:
+        additionalProperties: false
+        description: |-
+          InstructionInformation
+          Further information complementing the coded instruction or instruction to the next agent that is bilaterally agreed or specific to a user community.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text'
+        type: object
+    required:
+      - InstrInf
+    type: object
+  LEIIdentifier:
+    description: |-
+      LEIIdentifier
+      Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".
+    pattern: ^([0-9A-Z]{18,18}[0-9]{2,2})$
+    type: string
+  LocalInstrument2Choice__1:
+    additionalProperties: false
+    description: |-
+      LocalInstrument2Choice__1
+      Set of elements that further identifies the type of local instruments being requested by the initiating party.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Cd:
+        additionalProperties: false
+        description: |-
+          Code
+          Specifies the local instrument, as published in an external local instrument code list.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/ExternalLocalInstrument1Code'
+        type: object
+      Prtry:
+        additionalProperties: false
+        description: |-
+          Proprietary
+          Specifies the local instrument, as a proprietary code.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text'
+        type: object
+    type: object
+  PaymentIdentification7__1:
+    additionalProperties: false
+    description: |-
+      PaymentIdentification7__1
+      Provides further means of referencing a payment transaction.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      EndToEndId:
+        additionalProperties: false
+        description: |-
+          EndToEndIdentification
+          Unique identification, as assigned by the initiating party, to unambiguously identify the transaction. This identification is passed on, unchanged, throughout the entire end-to-end chain.
+
+          Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction. It can be included in several messages related to the transaction.
+
+          Usage: In case there are technical limitations to pass on multiple references, the end-to-end identification must be passed on throughout the entire end-to-end chain.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text'
+        type: object
+      InstrId:
+        additionalProperties: false
+        description: |-
+          InstructionIdentification
+          Unique identification, as assigned by an instructing party for an instructed party, to unambiguously identify the instruction.
+
+          Usage: The instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction. It can be included in several messages related to the instruction.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax16Text'
+        type: object
+      TxId:
+        additionalProperties: false
+        description: |-
+          TransactionIdentification
+          Unique identification, as assigned by the first instructing agent, to unambiguously identify the transaction that is passed on, unchanged, throughout the entire interbank chain. 
+          Usage: The transaction identification can be used for reconciliation, tracking or to link tasks relating to the transaction on the interbank level. 
+          Usage: The instructing agent has to make sure that the transaction identification is unique for a pre-agreed period.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text'
+        type: object
+      UETR:
+        additionalProperties: false
+        description: |-
+          UETR
+          Universally unique identifier to provide an end-to-end reference of a payment transaction.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/UUIDv4Identifier'
+        type: object
+    required:
+      - EndToEndId
+      - InstrId
+      - UETR
+    type: object
+  PaymentTypeInformation28__1:
+    additionalProperties: false
+    description: |-
+      PaymentTypeInformation28__1
+      Provides further details of the type of payment.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      CtgyPurp:
+        $ref: '#/definitions/CategoryPurpose1Choice__1'
+        description: |-
+          CategoryPurpose
+          Specifies the high level purpose of the instruction based on a set of pre-defined categories.
+          Usage: This is used by the initiating party to provide information concerning the processing of the payment. It is likely to trigger special processing by any of the agents involved in the payment chain.
+      InstrPrty:
+        additionalProperties: false
+        description: |-
+          InstructionPriority
+          Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/Priority2Code'
+        type: object
+      LclInstrm:
+        $ref: '#/definitions/LocalInstrument2Choice__1'
+        description: |-
+          LocalInstrument
+          User community specific instrument.
+
+          Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level.
+      SvcLvl:
+        items:
+          $ref: '#/definitions/ServiceLevel8Choice__1'
+          description: |-
+            ServiceLevel
+            Agreement under which or rules under which the transaction should be processed.
+        type: array
+    type: object
+  PostalAddress24__1:
+    additionalProperties: false
+    description: |-
+      PostalAddress24__1
+      Information that locates and identifies a specific address, as defined by postal services.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      AdrLine:
+        items:
+          additionalProperties: false
+          description: |-
+            AddressLine
+            Information that locates and identifies a specific address, as defined by postal services, presented in free format text.
+          patternProperties:
+            ^\?\w+$:
+              type: string
+          properties:
+            $:
+              $ref: '#/definitions/CBPR_RestrictedFINXMax35Text_Extended'
+          type: object
+        type: array
+      BldgNb:
+        additionalProperties: false
+        description: |-
+          BuildingNumber
+          Number that identifies the position of a building on a street.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax16Text_Extended'
+        type: object
+      BldgNm:
+        additionalProperties: false
+        description: |-
+          BuildingName
+          Name of the building or house.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text_Extended'
+        type: object
+      Ctry:
+        additionalProperties: false
+        description: |-
+          Country
+          Nation with its own government.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CountryCode'
+        type: object
+      CtrySubDvsn:
+        additionalProperties: false
+        description: |-
+          CountrySubDivision
+          Identifies a subdivision of a country such as state, region, county.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text_Extended'
+        type: object
+      Dept:
+        additionalProperties: false
+        description: |-
+          Department
+          Identification of a division of a large organisation or building.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax70Text_Extended'
+        type: object
+      DstrctNm:
+        additionalProperties: false
+        description: |-
+          DistrictName
+          Identifies a subdivision within a country sub-division.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text_Extended'
+        type: object
+      Flr:
+        additionalProperties: false
+        description: |-
+          Floor
+          Floor or storey within a building.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax70Text_Extended'
+        type: object
+      PstBx:
+        additionalProperties: false
+        description: |-
+          PostBox
+          Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax16Text_Extended'
+        type: object
+      PstCd:
+        additionalProperties: false
+        description: |-
+          PostCode
+          Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax16Text_Extended'
+        type: object
+      Room:
+        additionalProperties: false
+        description: |-
+          Room
+          Building room number.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax70Text_Extended'
+        type: object
+      StrtNm:
+        additionalProperties: false
+        description: |-
+          StreetName
+          Name of a street or thoroughfare.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax70Text_Extended'
+        type: object
+      SubDept:
+        additionalProperties: false
+        description: |-
+          SubDepartment
+          Identification of a sub-division of a large organisation or building.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax70Text_Extended'
+        type: object
+      TwnLctnNm:
+        additionalProperties: false
+        description: |-
+          TownLocationName
+          Specific location name within the town.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text_Extended'
+        type: object
+      TwnNm:
+        additionalProperties: false
+        description: |-
+          TownName
+          Name of a built-up area, with defined boundaries, and a local government.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text_Extended'
+        type: object
+    type: object
+  Priority2Code:
+    description: |-
+      Priority2Code
+      Specifies the priority level of an event.
+    enum:
+      - HIGH
+      - NORM
+    type: string
+  Priority3Code:
+    description: |-
+      Priority3Code
+      Specifies the priority level of an event.
+    enum:
+      - URGT
+      - HIGH
+      - NORM
+    type: string
+  ProxyAccountIdentification1__1:
+    additionalProperties: false
+    description: |-
+      ProxyAccountIdentification1__1
+      Information related to a proxy  identification of the account.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Id:
+        additionalProperties: false
+        description: |-
+          Identification
+          Identification used to indicate the account identification under another specified name.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax320Text_Extended'
+        type: object
+      Tp:
+        $ref: '#/definitions/ProxyAccountType1Choice__1'
+        description: |-
+          Type
+          Type of the proxy identification.
+    required:
+      - Id
+    type: object
+  ProxyAccountType1Choice__1:
+    additionalProperties: false
+    description: |-
+      ProxyAccountType1Choice__1
+      Specifies the scheme used for the identification of an account alias.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Cd:
+        additionalProperties: false
+        description: |-
+          Code
+          Name of the identification scheme, in a coded form as published in an external list.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/ExternalProxyAccountType1Code'
+        type: object
+      Prtry:
+        additionalProperties: false
+        description: |-
+          Proprietary
+          Name of the identification scheme, in a free text form.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text'
+        type: object
+    type: object
+  Purpose2Choice__1:
+    additionalProperties: false
+    description: |-
+      Purpose2Choice__1
+      Specifies the underlying reason for the payment transaction.
+      Usage: Purpose is used by the end-customers, that is initiating party, (ultimate) debtor, (ultimate) creditor to provide information concerning the nature of the payment. Purpose is a content element, which is not used for processing by any of the agents involved in the payment chain.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Cd:
+        additionalProperties: false
+        description: |-
+          Code
+          Underlying reason for the payment transaction, as published in an external purpose code list.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/ExternalPurpose1Code'
+        type: object
+      Prtry:
+        additionalProperties: false
+        description: |-
+          Proprietary
+          Purpose, in a proprietary form.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/HVPSPlus_RestrictedFINXMax35Text'
+        type: object
+    type: object
+  RemittanceInformation2__1:
+    additionalProperties: false
+    description: |-
+      RemittanceInformation2__1
+      Information supplied to enable the matching of an entry with the items that the transfer is intended to settle.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Ustrd:
+        additionalProperties: false
+        description: |-
+          Unstructured
+          Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, for example, commercial invoices in an accounts' receivable system in an unstructured form.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax140Text_Extended'
+        type: object
+    type: object
+  RestrictedFINActiveCurrencyAndAmount:
+    additionalProperties: false
+    description: |-
+      RestrictedFINActiveCurrencyAndAmount
+      A number of monetary units specified in an active currency where the unit of currency is explicit and compliant with ISO 4217.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      $:
+        $ref: '#/definitions/RestrictedFINActiveCurrencyAndAmount_SimpleType'
+      '@Ccy':
+        $ref: '#/definitions/ActiveCurrencyCode_fixed'
+    required:
+      - '@Ccy'
+    type: object
+  RestrictedFINActiveCurrencyAndAmount_SimpleType:
+    minimum: 0
+    type: number
+  ServiceLevel8Choice__1:
+    additionalProperties: false
+    description: |-
+      ServiceLevel8Choice__1
+      Specifies the service level of the transaction.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      Cd:
+        additionalProperties: false
+        description: |-
+          Code
+          Specifies a pre-agreed service or level of service between the parties, as published in an external service level code list.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/ExternalServiceLevel1Code'
+        type: object
+      Prtry:
+        additionalProperties: false
+        description: |-
+          Proprietary
+          Specifies a pre-agreed service or level of service between the parties, as a proprietary code.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/CBPR_RestrictedFINXMax35Text'
+        type: object
+    type: object
+  SettlementInstruction7__1:
+    additionalProperties: false
+    description: |-
+      SettlementInstruction7__1
+      Provides further details on the settlement of the instruction.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      ClrSys:
+        $ref: '#/definitions/ClearingSystemIdentification3Choice__1'
+        description: |-
+          ClearingSystem
+          Specification of a pre-agreed offering between clearing agents or the channel through which the payment instruction is processed.
+      SttlmMtd:
+        additionalProperties: false
+        description: |-
+          SettlementMethod
+          Method used to settle the (batch of) payment instructions.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/SettlementMethod1Code__1'
+        type: object
+    required:
+      - ClrSys
+      - SttlmMtd
+    type: object
+  SettlementMethod1Code__1:
+    description: |-
+      SettlementMethod1Code__1
+      Specifies the method used to settle the credit transfer instruction.
+    enum:
+      - CLRG
+    type: string
+  SettlementTimeRequest2__1:
+    additionalProperties: false
+    description: |-
+      SettlementTimeRequest2__1
+      Provides information on the requested settlement time(s) of the payment instruction.
+    patternProperties:
+      ^\?\w+$:
+        type: string
+    properties:
+      CLSTm:
+        additionalProperties: false
+        description: |-
+          CLSTime
+          Time by which the amount of money must be credited, with confirmation, to the CLS Bank's account at the central bank.
+          Usage: Time must be expressed in Central European Time (CET).
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/HVPSPlus_Time'
+        type: object
+      FrTm:
+        additionalProperties: false
+        description: |-
+          FromTime
+          Time as from when the payment may be settled.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/HVPSPlus_Time'
+        type: object
+      RjctTm:
+        additionalProperties: false
+        description: |-
+          RejectTime
+          Time by when the payment must be settled to avoid rejection.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/HVPSPlus_Time'
+        type: object
+      TillTm:
+        additionalProperties: false
+        description: |-
+          TillTime
+          Time until when the payment may be settled.
+        patternProperties:
+          ^\?\w+$:
+            type: string
+        properties:
+          $:
+            $ref: '#/definitions/HVPSPlus_Time'
+        type: object
+    type: object
+  UUIDv4Identifier:
+    description: |-
+      UUIDv4Identifier
+      Universally Unique IDentifier (UUID) version 4, as described in IETC RFC 4122 "Universally Unique IDentifier (UUID) URN Namespace".
+    pattern: ^([0-9a-f]{8,8}\-[0-9a-f]{4,4}\-4[0-9a-f]{3,3}\-[8-9a-b][0-9a-f]{3,3}\-[0-9a-f]{12,12})$
+    type: string
+description: JSON Schema generated by XMLSpy v2024 rel. 2 (x64) (https://www.altova.com)
+patternProperties:
+  ^\?\w+$:
+    type: string
+properties:
+  '@xmlns:n1':
+    default: urn:iso:std:iso:20022:tech:xsd:pacs.009.001.08
+  Document:
+    $ref: '#/definitions/.Document'
+type: object
