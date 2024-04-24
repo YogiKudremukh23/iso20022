@@ -1,0 +1,3274 @@
+$schema: http://json-schema.org/draft-04/schema#
+additionalProperties: false
+definitions:
+    .Document:
+        $ref: "#/components/schemas/pain09/Document"
+    AccountIdentification4Choice:
+        additionalProperties: false
+        description: |
+            AccountIdentification4Choice
+            Specifies the unique identification of an account as assigned by the account servicer.
+        properties:
+            IBAN:
+                $ref: "#/components/schemas/pain09/IBAN2007Identifier"
+                description: |
+                    IBAN
+                    International Bank Account Number (IBAN) - identifier used internationally by financial institutions to uniquely identify the account of a customer. Further specifications of the format and content of the IBAN can be found in the standard ISO 13616 "Banking and related financial services - International Bank Account Number (IBAN)" version 1997-10-01, or later revisions.
+            Othr:
+                $ref: "#/components/schemas/pain09/GenericAccountIdentification1"
+                description: |
+                    Other
+                    Unique identification of an account, as assigned by the account servicer, using an identification scheme.
+        type: object
+    AccountSchemeName1Choice:
+        additionalProperties: false
+        description: |
+            AccountSchemeName1Choice
+            Sets of elements to identify a name of the identification scheme.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalAccountIdentification1Code"
+                description: |
+                    Code
+                    Name of the identification scheme, in a coded form as published in an external list.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Name of the identification scheme, in a free text form.
+        type: object
+    ActiveOrHistoricCurrencyAndAmount:
+        additionalProperties: false
+        description: |
+            ActiveOrHistoricCurrencyAndAmount
+            A number of monetary units specified in an active or a historic currency where the unit of currency is explicit and compliant with ISO 4217.
+        properties:
+            $:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount_SimpleType"
+            "@Ccy":
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyCode"
+        required:
+            - "@Ccy"
+        type:
+            - object
+            - string
+            - number
+            - boolean
+    ActiveOrHistoricCurrencyAndAmount_SimpleType:
+        minimum: 0
+        type: number
+    ActiveOrHistoricCurrencyCode:
+        description: |
+            ActiveOrHistoricCurrencyCode
+            A code allocated to a currency by a Maintenance Agency under an international identification scheme, as described in the latest edition of the international standard ISO 4217 "Codes for the representation of currencies and funds".
+        pattern: ^([A-Z]{3,3})$
+        type: string
+    AddressType2Code:
+        description: |
+            AddressType2Code
+            Specifies the type of address.
+        enum:
+            - ADDR
+            - PBOX
+            - HOME
+            - BIZZ
+            - MLTO
+            - DLVY
+        type: string
+    AddressType3Choice:
+        additionalProperties: false
+        description: |
+            AddressType3Choice
+            Choice of formats for the type of address.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/AddressType2Code"
+                description: |
+                    Code
+                    Type of address expressed as a code.
+            Prtry:
+                $ref: "#/components/schemas/pain09/GenericIdentification30"
+                description: |
+                    Proprietary
+                    Type of address expressed as a proprietary code.
+        type: object
+    AmountType4Choice:
+        additionalProperties: false
+        description: |
+            AmountType4Choice
+            Specifies the amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party.
+        properties:
+            EqvtAmt:
+                $ref: "#/components/schemas/pain09/EquivalentAmount2"
+                description: |
+                    EquivalentAmount
+                    Amount of money to be moved between the debtor and creditor, expressed in the currency of the debtor's account, and the currency in which the amount is to be moved.
+            InstdAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    InstructedAmount
+                    Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party.
+                    
+                    
+                    
+                    Usage: This amount has to be transported unchanged through the transaction chain.
+        type: object
+    AnyBICDec2014Identifier:
+        description: |
+            AnyBICDec2014Identifier
+            Code allocated to a financial or non-financial institution by the ISO 9362 Registration Authority, as described in ISO 9362: 2014 - "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+        pattern: ^([0-9A-Z]{4,4}[A-Z]{2,2}[0-9A-Z]{2,2}([0-9A-Z]{3,3})?)$
+        type: string
+    Authorisation1Choice:
+        additionalProperties: false
+        description: |
+            Authorisation1Choice
+            Provides the details on the user identification or any user key that allows to check if the initiating party is allowed to issue the transaction.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/Authorisation1Code"
+                description: |
+                    Code
+                    Specifies the authorisation, in a coded form.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max128Text"
+                description: |
+                    Proprietary
+                    Specifies the authorisation, in a free text form.
+        type: object
+    Authorisation1Code:
+        description: |
+            Authorisation1Code
+            Specifies the level of approval depending on a number of factors, including payment type, threshold amount or local country or operations practice.
+        enum:
+            - AUTH
+            - FDET
+            - FSUM
+            - ILEV
+        type: string
+    BICFIDec2014Identifier:
+        description: |
+            BICFIDec2014Identifier
+            Code allocated to a financial institution by the ISO 9362 Registration Authority as described in ISO 9362: 2014 - "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+        pattern: ^([0-9A-Z]{4,4}[A-Z]{2,2}[0-9A-Z]{2,2}([0-9A-Z]{3,3})?)$
+        type: string
+    BaseOneRate:
+        description: |
+            BaseOneRate
+            Rate expressed as a decimal, for example, 0.7 is 7/10 and 70%.
+        type: number
+    BatchBookingIndicator:
+        description: |
+            BatchBookingIndicator
+            Identifies whether the sending party requests a single debit or credit entry per individual transaction or a batch entry for the sum of the amounts of all transactions.
+        type: boolean
+    BranchAndFinancialInstitutionIdentification6:
+        additionalProperties: false
+        description: |
+            BranchAndFinancialInstitutionIdentification6
+            Unique and unambiguous identification of a financial institution or a branch of a financial institution.
+        properties:
+            BrnchId:
+                $ref: "#/components/schemas/pain09/BranchData3"
+                description: |
+                    BranchIdentification
+                    Identifies a specific branch of a financial institution.
+                    
+                    Usage: This component should be used in case the identification information in the financial institution component does not provide identification up to branch level.
+            FinInstnId:
+                $ref: "#/components/schemas/pain09/FinancialInstitutionIdentification18"
+                description: |
+                    FinancialInstitutionIdentification
+                    Unique and unambiguous identification of a financial institution, as assigned under an internationally recognised or proprietary identification scheme.
+        required:
+            - FinInstnId
+        type: object
+    BranchData3:
+        additionalProperties: false
+        description: |
+            BranchData3
+            Information that locates and identifies a specific branch of a financial institution.
+        properties:
+            Id:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Identification
+                    Unique and unambiguous identification of a branch of a financial institution.
+            LEI:
+                $ref: "#/components/schemas/pain09/LEIIdentifier"
+                description: |
+                    LEI
+                    Legal entity identification for the branch of the financial institution.
+            Nm:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    Name
+                    Name by which an agent is known and which is usually used to identify that agent.
+            PstlAdr:
+                $ref: "#/components/schemas/pain09/PostalAddress24"
+                description: |
+                    PostalAddress
+                    Information that locates and identifies a specific address, as defined by postal services.
+        type: object
+    CashAccount38:
+        additionalProperties: false
+        description: |
+            CashAccount38
+            Provides the details to identify an account.
+        properties:
+            Ccy:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyCode"
+                description: |
+                    Currency
+                    Identification of the currency in which the account is held. 
+                    
+                    Usage: Currency should only be used in case one and the same account number covers several currencies
+                    and the initiating party needs to identify which currency needs to be used for settlement on the account.
+            Id:
+                $ref: "#/components/schemas/pain09/AccountIdentification4Choice"
+                description: |
+                    Identification
+                    Unique and unambiguous identification for the account between the account owner and the account servicer.
+            Nm:
+                $ref: "#/components/schemas/pain09/Max70Text"
+                description: |
+                    Name
+                    Name of the account, as assigned by the account servicing institution, in agreement with the account owner in order to provide an additional means of identification of the account.
+                    
+                    Usage: The account name is different from the account owner name. The account name is used in certain user communities to provide a means of identifying the account, in addition to the account owner's identity and the account number.
+            Prxy:
+                $ref: "#/components/schemas/pain09/ProxyAccountIdentification1"
+                description: |
+                    Proxy
+                    Specifies an alternate assumed name for the identification of the account. 
+            Tp:
+                $ref: "#/components/schemas/pain09/CashAccountType2Choice"
+                description: |
+                    Type
+                    Specifies the nature, or use of the account.
+        required:
+            - Id
+        type: object
+    CashAccountType2Choice:
+        additionalProperties: false
+        description: |
+            CashAccountType2Choice
+            Nature or use of the account.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalCashAccountType1Code"
+                description: |
+                    Code
+                    Account type, in a coded form.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Nature or use of the account in a proprietary form.
+        type: object
+    CategoryPurpose1Choice:
+        additionalProperties: false
+        description: |
+            CategoryPurpose1Choice
+            Specifies the high level purpose of the instruction based on a set of pre-defined categories.
+            Usage: This is used by the initiating party to provide information concerning the processing of the payment. It is likely to trigger special processing by any of the agents involved in the payment chain.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalCategoryPurpose1Code"
+                description: |
+                    Code
+                    Category purpose, as published in an external category purpose code list.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Category purpose, in a proprietary form.
+        type: object
+    ChargeBearerType1Code:
+        description: |
+            ChargeBearerType1Code
+            Specifies which party(ies) will pay charges due for processing of the instruction.
+        enum:
+            - DEBT
+            - CRED
+            - SHAR
+            - SLEV
+        type: string
+    Cheque11:
+        additionalProperties: false
+        description: |
+            Cheque11
+            Characteristics of a cheque instruction, such as cheque type or cheque number.
+        properties:
+            ChqFr:
+                $ref: "#/components/schemas/pain09/NameAndAddress16"
+                description: |
+                    ChequeFrom
+                    Identifies the party that ordered the issuance of the cheque.
+            ChqMtrtyDt:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    ChequeMaturityDate
+                    Date when the draft becomes payable and the debtor's account is debited.
+            ChqNb:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    ChequeNumber
+                    Unique and unambiguous identifier for a cheque as assigned by the agent.
+            ChqTp:
+                $ref: "#/components/schemas/pain09/ChequeType2Code"
+                description: |
+                    ChequeType
+                    Specifies the type of cheque to be issued.
+            DlvrTo:
+                $ref: "#/components/schemas/pain09/NameAndAddress16"
+                description: |
+                    DeliverTo
+                    Party to whom the debtor's agent needs to send the cheque.
+            DlvryMtd:
+                $ref: "#/components/schemas/pain09/ChequeDeliveryMethod1Choice"
+                description: |
+                    DeliveryMethod
+                    Specifies the delivery method of the cheque by the debtor's agent.
+            FrmsCd:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    FormsCode
+                    Identifies, in a coded form, the cheque layout, company logo and digitised signature to be used to print the cheque, as agreed between the initiating party and the debtor's agent.
+            InstrPrty:
+                $ref: "#/components/schemas/pain09/Priority2Code"
+                description: |
+                    InstructionPriority
+                    Urgency or order of importance that the originator would like the recipient of the payment instruction to apply to the processing of the payment instruction.
+            MemoFld:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/Max35Text"
+                        description: |
+                            MemoField
+                            Information that needs to be printed on a cheque, used by the payer to add miscellaneous information.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/Max35Text"
+                            description: |
+                                MemoField
+                                Information that needs to be printed on a cheque, used by the payer to add miscellaneous information.
+                        maxItems: 2
+                        type: array
+            PrtLctn:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    PrintLocation
+                    Specifies the print location of the cheque.
+            RgnlClrZone:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    RegionalClearingZone
+                    Regional area in which the cheque can be cleared, when a country has no nation-wide cheque clearing organisation.
+            Sgntr:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/Max70Text"
+                        description: |
+                            Signature
+                            Signature to be used by the cheque servicer on a specific cheque to be printed.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/Max70Text"
+                            description: |
+                                Signature
+                                Signature to be used by the cheque servicer on a specific cheque to be printed.
+                        maxItems: 5
+                        type: array
+        type: object
+    ChequeDelivery1Code:
+        description: |
+            ChequeDelivery1Code
+            Specifies the method to be used in delivering a cheque to a party.
+        enum:
+            - MLDB
+            - MLCD
+            - MLFA
+            - CRDB
+            - CRCD
+            - CRFA
+            - PUDB
+            - PUCD
+            - PUFA
+            - RGDB
+            - RGCD
+            - RGFA
+        type: string
+    ChequeDeliveryMethod1Choice:
+        additionalProperties: false
+        description: |
+            ChequeDeliveryMethod1Choice
+            Set of characteristics related to a cheque instruction, such as cheque type or cheque number.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ChequeDelivery1Code"
+                description: |
+                    Code
+                    Specifies the delivery method of the cheque by the debtor's agent.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Specifies a proprietary delivery method of the cheque by the debtor's agent.
+        type: object
+    ChequeType2Code:
+        description: |
+            ChequeType2Code
+            Specifies the type of cheque.
+        enum:
+            - CCHQ
+            - CCCH
+            - BCHQ
+            - DRFT
+            - ELDR
+        type: string
+    ClearingSystemIdentification2Choice:
+        additionalProperties: false
+        description: |
+            ClearingSystemIdentification2Choice
+            Choice of a clearing system identifier.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalClearingSystemIdentification1Code"
+                description: |
+                    Code
+                    Identification of a clearing system, in a coded form as published in an external list.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Identification code for a clearing system, that has not yet been identified in the list of clearing systems.
+        type: object
+    ClearingSystemMemberIdentification2:
+        additionalProperties: false
+        description: |
+            ClearingSystemMemberIdentification2
+            Unique identification, as assigned by a clearing system, to unambiguously identify a member of the clearing system.
+        properties:
+            ClrSysId:
+                $ref: "#/components/schemas/pain09/ClearingSystemIdentification2Choice"
+                description: |
+                    ClearingSystemIdentification
+                    Specification of a pre-agreed offering between clearing agents or the channel through which the payment instruction is processed.
+            MmbId:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    MemberIdentification
+                    Identification of a member of a clearing system.
+        required:
+            - MmbId
+        type: object
+    Contact4:
+        additionalProperties: false
+        description: |
+            Contact4
+            Specifies the details of the contact person.
+        properties:
+            Dept:
+                $ref: "#/components/schemas/pain09/Max70Text"
+                description: |
+                    Department
+                    Identification of a division of a large organisation or building.
+            EmailAdr:
+                $ref: "#/components/schemas/pain09/Max2048Text"
+                description: |
+                    EmailAddress
+                    Address for electronic mail (e-mail).
+            EmailPurp:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    EmailPurpose
+                    Purpose for which an email address may be used.
+            FaxNb:
+                $ref: "#/components/schemas/pain09/PhoneNumber"
+                description: |
+                    FaxNumber
+                    Collection of information that identifies a FAX number, as defined by telecom services.
+            JobTitl:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    JobTitle
+                    Title of the function.
+            MobNb:
+                $ref: "#/components/schemas/pain09/PhoneNumber"
+                description: |
+                    MobileNumber
+                    Collection of information that identifies a mobile phone number, as defined by telecom services.
+            Nm:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    Name
+                    Name by which a party is known and which is usually used to identify that party.
+            NmPrfx:
+                $ref: "#/components/schemas/pain09/NamePrefix2Code"
+                description: |
+                    NamePrefix
+                    Specifies the terms used to formally address a person.
+            Othr:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/OtherContact1"
+                        description: |
+                            Other
+                            Contact details in another form.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/OtherContact1"
+                            description: |
+                                Other
+                                Contact details in another form.
+                        type: array
+            PhneNb:
+                $ref: "#/components/schemas/pain09/PhoneNumber"
+                description: |
+                    PhoneNumber
+                    Collection of information that identifies a phone number, as defined by telecom services.
+            PrefrdMtd:
+                $ref: "#/components/schemas/pain09/PreferredContactMethod1Code"
+                description: |
+                    PreferredMethod
+                    Preferred method used to reach the contact.
+            Rspnsblty:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Responsibility
+                    Role of a person in an organisation.
+        type: object
+    CountryCode:
+        description: |
+            CountryCode
+            Code to identify a country, a dependency, or another area of particular geopolitical interest, on the basis of country names obtained from the United Nations (ISO 3166, Alpha-2 code).
+        pattern: ^([A-Z]{2,2})$
+        type: string
+    CreditDebitCode:
+        description: |
+            CreditDebitCode
+            Specifies if an operation is an increase or a decrease.
+        enum:
+            - CRDT
+            - DBIT
+        type: string
+    CreditTransferTransaction34:
+        additionalProperties: false
+        description: |
+            CreditTransferTransaction34
+            Provide further details specific to the individual transaction(s) included in the message.
+        properties:
+            Amt:
+                $ref: "#/components/schemas/pain09/AmountType4Choice"
+                description: |
+                    Amount
+                    Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party.
+            Cdtr:
+                $ref: "#/components/schemas/pain09/PartyIdentification135"
+                description: |
+                    Creditor
+                    Party to which an amount of money is due.
+            CdtrAcct:
+                $ref: "#/components/schemas/pain09/CashAccount38"
+                description: |
+                    CreditorAccount
+                    Unambiguous identification of the account of the creditor to which a credit entry will be posted as a result of the payment transaction.
+            CdtrAgt:
+                $ref: "#/components/schemas/pain09/BranchAndFinancialInstitutionIdentification6"
+                description: |
+                    CreditorAgent
+                    Financial institution servicing an account for the creditor.
+            CdtrAgtAcct:
+                $ref: "#/components/schemas/pain09/CashAccount38"
+                description: |
+                    CreditorAgentAccount
+                    Unambiguous identification of the account of the creditor agent at its servicing agent to which a credit entry will be made as a result of the payment transaction.
+            ChqInstr:
+                $ref: "#/components/schemas/pain09/Cheque11"
+                description: |
+                    ChequeInstruction
+                    Set of elements needed to issue a cheque.
+            ChrgBr:
+                $ref: "#/components/schemas/pain09/ChargeBearerType1Code"
+                description: |
+                    ChargeBearer
+                    Specifies which party/parties will bear the charges associated with the processing of the payment transaction.
+            InstrForCdtrAgt:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/InstructionForCreditorAgent1"
+                        description: |
+                            InstructionForCreditorAgent
+                            Further information related to the processing of the payment instruction, provided by the initiating party, and intended for the creditor agent.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/InstructionForCreditorAgent1"
+                            description: |
+                                InstructionForCreditorAgent
+                                Further information related to the processing of the payment instruction, provided by the initiating party, and intended for the creditor agent.
+                        type: array
+            InstrForDbtrAgt:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    InstructionForDebtorAgent
+                    Further information related to the processing of the payment instruction, that may need to be acted upon by the debtor agent, depending on agreement between debtor and the debtor agent.
+            IntrmyAgt1:
+                $ref: "#/components/schemas/pain09/BranchAndFinancialInstitutionIdentification6"
+                description: |
+                    IntermediaryAgent1
+                    Agent between the debtor's agent and the creditor's agent.
+                    
+                    Usage: If more than one intermediary agent is present, then IntermediaryAgent1 identifies the agent between the DebtorAgent and the IntermediaryAgent2.
+            IntrmyAgt1Acct:
+                $ref: "#/components/schemas/pain09/CashAccount38"
+                description: |
+                    IntermediaryAgent1Account
+                    Unambiguous identification of the account of the intermediary agent 1 at its servicing agent in the payment chain.
+            IntrmyAgt2:
+                $ref: "#/components/schemas/pain09/BranchAndFinancialInstitutionIdentification6"
+                description: |
+                    IntermediaryAgent2
+                    Agent between the debtor's agent and the creditor's agent.
+                    
+                    Usage: If more than two intermediary agents are present, then IntermediaryAgent2 identifies the agent between the IntermediaryAgent1 and the IntermediaryAgent3.
+            IntrmyAgt2Acct:
+                $ref: "#/components/schemas/pain09/CashAccount38"
+                description: |
+                    IntermediaryAgent2Account
+                    Unambiguous identification of the account of the intermediary agent 2 at its servicing agent in the payment chain.
+            IntrmyAgt3:
+                $ref: "#/components/schemas/pain09/BranchAndFinancialInstitutionIdentification6"
+                description: |
+                    IntermediaryAgent3
+                    Agent between the debtor's agent and the creditor's agent.
+                    
+                    Usage: If IntermediaryAgent3 is present, then it identifies the agent between the IntermediaryAgent 2 and the CreditorAgent.
+            IntrmyAgt3Acct:
+                $ref: "#/components/schemas/pain09/CashAccount38"
+                description: |
+                    IntermediaryAgent3Account
+                    Unambiguous identification of the account of the intermediary agent 3 at its servicing agent in the payment chain.
+            PmtId:
+                $ref: "#/components/schemas/pain09/PaymentIdentification6"
+                description: |
+                    PaymentIdentification
+                    Set of elements used to reference a payment instruction.
+            PmtTpInf:
+                $ref: "#/components/schemas/pain09/PaymentTypeInformation26"
+                description: |
+                    PaymentTypeInformation
+                    Set of elements used to further specify the type of transaction.
+            Purp:
+                $ref: "#/components/schemas/pain09/Purpose2Choice"
+                description: |
+                    Purpose
+                    Underlying reason for the payment transaction.
+                    Usage: Purpose is used by the end-customers, that is initiating party, (ultimate) debtor, (ultimate) creditor to provide information concerning the nature of the payment. Purpose is a content element, which is not used for processing by any of the agents involved in the payment chain.
+            RgltryRptg:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/RegulatoryReporting3"
+                        description: |
+                            RegulatoryReporting
+                            Information needed due to regulatory and statutory requirements.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/RegulatoryReporting3"
+                            description: |
+                                RegulatoryReporting
+                                Information needed due to regulatory and statutory requirements.
+                        maxItems: 10
+                        type: array
+            RltdRmtInf:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/RemittanceLocation7"
+                        description: |
+                            RelatedRemittanceInformation
+                            Provides information related to the handling of the remittance information by any of the agents in the transaction processing chain.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/RemittanceLocation7"
+                            description: |
+                                RelatedRemittanceInformation
+                                Provides information related to the handling of the remittance information by any of the agents in the transaction processing chain.
+                        maxItems: 10
+                        type: array
+            RmtInf:
+                $ref: "#/components/schemas/pain09/RemittanceInformation16"
+                description: |
+                    RemittanceInformation
+                    Information supplied to enable the matching of an entry with the items that the transfer is intended to settle, such as commercial invoices in an accounts' receivable system.
+            SplmtryData:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/SupplementaryData1"
+                        description: |
+                            SupplementaryData
+                            Additional information that cannot be captured in the structured elements and/or any other specific block.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/SupplementaryData1"
+                            description: |
+                                SupplementaryData
+                                Additional information that cannot be captured in the structured elements and/or any other specific block.
+                        type: array
+            Tax:
+                $ref: "#/components/schemas/pain09/TaxInformation8"
+                description: |
+                    Tax
+                    Provides details on the tax.
+            UltmtCdtr:
+                $ref: "#/components/schemas/pain09/PartyIdentification135"
+                description: |
+                    UltimateCreditor
+                    Ultimate party to which an amount of money is due.
+            UltmtDbtr:
+                $ref: "#/components/schemas/pain09/PartyIdentification135"
+                description: |
+                    UltimateDebtor
+                    Ultimate party that owes an amount of money to the (ultimate) creditor.
+            XchgRateInf:
+                $ref: "#/components/schemas/pain09/ExchangeRate1"
+                description: |
+                    ExchangeRateInformation
+                    Provides details on the currency exchange rate and contract.
+        required:
+            - Amt
+            - PmtId
+        type: object
+    CreditorReferenceInformation2:
+        additionalProperties: false
+        description: |
+            CreditorReferenceInformation2
+            Reference information provided by the creditor to allow the identification of the underlying documents.
+        properties:
+            Ref:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Reference
+                    Unique reference, as assigned by the creditor, to unambiguously refer to the payment transaction.
+                    
+                    Usage: If available, the initiating party should provide this reference in the structured remittance information, to enable reconciliation by the creditor upon receipt of the amount of money.
+                    
+                    If the business context requires the use of a creditor reference or a payment remit identification, and only one identifier can be passed through the end-to-end chain, the creditor's reference or payment remittance identification should be quoted in the end-to-end transaction identification.
+            Tp:
+                $ref: "#/components/schemas/pain09/CreditorReferenceType2"
+                description: |
+                    Type
+                    Specifies the type of creditor reference.
+        type: object
+    CreditorReferenceType1Choice:
+        additionalProperties: false
+        description: |
+            CreditorReferenceType1Choice
+            Specifies the type of document referred by the creditor.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/DocumentType3Code"
+                description: |
+                    Code
+                    Type of creditor reference, in a coded form.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Creditor reference type, in a proprietary form.
+        type: object
+    CreditorReferenceType2:
+        additionalProperties: false
+        description: |
+            CreditorReferenceType2
+            Specifies the type of creditor reference.
+        properties:
+            CdOrPrtry:
+                $ref: "#/components/schemas/pain09/CreditorReferenceType1Choice"
+                description: |
+                    CodeOrProprietary
+                    Coded or proprietary format creditor reference type.
+            Issr:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Issuer
+                    Entity that assigns the credit reference type.
+        required:
+            - CdOrPrtry
+        type: object
+    CustomerCreditTransferInitiationV09:
+        additionalProperties: false
+        description: |
+            CustomerCreditTransferInitiationV09
+            Scope
+            
+            The CustomerCreditTransferInitiation message is sent by the initiating party to the forwarding agent or debtor agent. It is used to request movement of funds from the debtor account to a creditor.
+            
+            Usage
+            
+            The CustomerCreditTransferInitiation message can contain one or more customer credit transfer instructions.
+            
+            The CustomerCreditTransferInitiation message is used to exchange:
+            
+            - One or more instances of a credit transfer initiation;
+            
+            - Payment transactions that result in book transfers at the debtor agent or payments to another financial institution;
+            
+            - Payment transactions that result in an electronic cash transfer to the creditor account or in the emission of a cheque.
+            
+            The message can be used in a direct or a relay scenario:
+            
+            - In a direct scenario, the message is sent directly to the debtor agent. The debtor agent is the account servicer of the debtor.
+            
+            - In a relay scenario, the message is sent to a forwarding agent. The forwarding agent acts as a concentrating financial institution. It will forward the CustomerCreditTransferInitiation message to the debtor agent.
+            
+            The message can also be used by an initiating party that has authority to send the message on behalf of the debtor. This caters for example for the scenario of a payments factory initiating all payments on behalf of a large corporate.
+            
+            The CustomerCreditTransferInitiation message can be used in domestic and cross-border scenarios.
+            
+            The CustomerCreditTransferInitiation message must not be used by the debtor agent to execute the credit transfer instruction(s). The FIToFICustomerCreditTransfer message must be used instead.
+        properties:
+            GrpHdr:
+                $ref: "#/components/schemas/pain09/GroupHeader85"
+                description: |
+                    GroupHeader
+                    Set of characteristics shared by all individual transactions included in the message.
+            PmtInf:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/PaymentInstruction30"
+                        description: |
+                            PaymentInformation
+                            Set of characteristics that applies to the debit side of the payment transactions included in the credit transfer initiation.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/PaymentInstruction30"
+                            description: |
+                                PaymentInformation
+                                Set of characteristics that applies to the debit side of the payment transactions included in the credit transfer initiation.
+                        minItems: 1
+                        type: array
+            SplmtryData:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/SupplementaryData1"
+                        description: |
+                            SupplementaryData
+                            Additional information that cannot be captured in the structured elements and/or any other specific block.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/SupplementaryData1"
+                            description: |
+                                SupplementaryData
+                                Additional information that cannot be captured in the structured elements and/or any other specific block.
+                        type: array
+        required:
+            - GrpHdr
+            - PmtInf
+        type: object
+    DateAndDateTime2Choice:
+        additionalProperties: false
+        description: |
+            DateAndDateTime2Choice
+            Choice between a date or a date and time format.
+        properties:
+            Dt:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    Date
+                    Specified date.
+            DtTm:
+                $ref: "#/components/schemas/pain09/ISODateTime"
+                description: |
+                    DateTime
+                    Specified date and time.
+        type: object
+    DateAndPlaceOfBirth1:
+        additionalProperties: false
+        description: |
+            DateAndPlaceOfBirth1
+            Date and place of birth of a person.
+        properties:
+            BirthDt:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    BirthDate
+                    Date on which a person is born.
+            CityOfBirth:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    CityOfBirth
+                    City where a person was born.
+            CtryOfBirth:
+                $ref: "#/components/schemas/pain09/CountryCode"
+                description: |
+                    CountryOfBirth
+                    Country where a person was born.
+            PrvcOfBirth:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    ProvinceOfBirth
+                    Province where a person was born.
+        required:
+            - BirthDt
+            - CityOfBirth
+            - CtryOfBirth
+        type: object
+    DatePeriod2:
+        additionalProperties: false
+        description: |
+            DatePeriod2
+            Range of time defined by a start date and an end date.
+        properties:
+            FrDt:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    FromDate
+                    Start date of the range.
+            ToDt:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    ToDate
+                    End date of the range.
+        required:
+            - FrDt
+            - ToDt
+        type: object
+    DecimalNumber:
+        description: |
+            DecimalNumber
+            Number of objects represented as a decimal number, for example 0.75 or 45.6.
+        type: number
+    DiscountAmountAndType1:
+        additionalProperties: false
+        description: |
+            DiscountAmountAndType1
+            Specifies the amount with a specific type.
+        properties:
+            Amt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    Amount
+                    Amount of money, which has been typed.
+            Tp:
+                $ref: "#/components/schemas/pain09/DiscountAmountType1Choice"
+                description: |
+                    Type
+                    Specifies the type of the amount.
+        required:
+            - Amt
+        type: object
+    DiscountAmountType1Choice:
+        additionalProperties: false
+        description: |
+            DiscountAmountType1Choice
+            Specifies the amount type.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalDiscountAmountType1Code"
+                description: |
+                    Code
+                    Specifies the amount type, in a coded form.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Specifies the amount type, in a free-text form.
+        type: object
+    Document:
+        additionalProperties: false
+        properties:
+            CstmrCdtTrfInitn:
+                $ref: "#/components/schemas/pain09/CustomerCreditTransferInitiationV09"
+        required:
+            - CstmrCdtTrfInitn
+        type: object
+    DocumentAdjustment1:
+        additionalProperties: false
+        description: |
+            DocumentAdjustment1
+            Set of elements used to provide information on the amount and reason of the document adjustment.
+        properties:
+            AddtlInf:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    AdditionalInformation
+                    Provides further details on the document adjustment.
+            Amt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    Amount
+                    Amount of money of the document adjustment.
+            CdtDbtInd:
+                $ref: "#/components/schemas/pain09/CreditDebitCode"
+                description: |
+                    CreditDebitIndicator
+                    Specifies whether the adjustment must be subtracted or added to the total amount.
+            Rsn:
+                $ref: "#/components/schemas/pain09/Max4Text"
+                description: |
+                    Reason
+                    Specifies the reason for the adjustment.
+        required:
+            - Amt
+        type: object
+    DocumentLineIdentification1:
+        additionalProperties: false
+        description: |
+            DocumentLineIdentification1
+            Identifies the documents referred to in the remittance information.
+        properties:
+            Nb:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Number
+                    Identification of the type specified for the referred document line.
+            RltdDt:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    RelatedDate
+                    Date associated with the referred document line.
+            Tp:
+                $ref: "#/components/schemas/pain09/DocumentLineType1"
+                description: |
+                    Type
+                    Specifies the type of referred document line identification.
+        type: object
+    DocumentLineInformation1:
+        additionalProperties: false
+        description: |+
+            DocumentLineInformation1
+            Provides document line information.
+            
+        properties:
+            Amt:
+                $ref: "#/components/schemas/pain09/RemittanceAmount3"
+                description: |
+                    Amount
+                    Provides details on the amounts of the document line.
+            Desc:
+                $ref: "#/components/schemas/pain09/Max2048Text"
+                description: |
+                    Description
+                    Description associated with the document line.
+            Id:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/DocumentLineIdentification1"
+                        description: |
+                            Identification
+                            Provides identification of the document line.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/DocumentLineIdentification1"
+                            description: |
+                                Identification
+                                Provides identification of the document line.
+                        minItems: 1
+                        type: array
+        required:
+            - Id
+        type: object
+    DocumentLineType1:
+        additionalProperties: false
+        description: |
+            DocumentLineType1
+            Specifies the type of the document line identification.
+        properties:
+            CdOrPrtry:
+                $ref: "#/components/schemas/pain09/DocumentLineType1Choice"
+                description: |
+                    CodeOrProprietary
+                    Provides the type details of the referred document line identification.
+            Issr:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Issuer
+                    Identification of the issuer of the reference document line identificationtype.
+        required:
+            - CdOrPrtry
+        type: object
+    DocumentLineType1Choice:
+        additionalProperties: false
+        description: |
+            DocumentLineType1Choice
+            Specifies the type of the document line identification.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalDocumentLineType1Code"
+                description: |
+                    Code
+                    Line identification type in a coded form.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Proprietary identification of the type of the remittance document.
+        type: object
+    DocumentType3Code:
+        description: |
+            DocumentType3Code
+            Specifies a type of financial or commercial document.
+        enum:
+            - RADM
+            - RPIN
+            - FXDR
+            - DISP
+            - PUOR
+            - SCOR
+        type: string
+    DocumentType6Code:
+        description: |
+            DocumentType6Code
+            Specifies a type of financial or commercial document.
+        enum:
+            - MSIN
+            - CNFA
+            - DNFA
+            - CINV
+            - CREN
+            - DEBN
+            - HIRI
+            - SBIN
+            - CMCN
+            - SOAC
+            - DISP
+            - BOLD
+            - VCHR
+            - AROI
+            - TSUT
+            - PUOR
+        type: string
+    EquivalentAmount2:
+        additionalProperties: false
+        description: |
+            EquivalentAmount2
+            Amount of money to be moved between the debtor and creditor, expressed in the currency of the debtor's account, and the currency in which the amount is to be moved.
+        properties:
+            Amt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    Amount
+                    Amount of money to be moved between debtor and creditor, before deduction of charges, expressed in the currency of the debtor's account, and to be moved in a different currency.
+                    Usage: The first agent will convert the equivalent amount into the amount to be moved.
+            CcyOfTrf:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyCode"
+                description: |
+                    CurrencyOfTransfer
+                    Specifies the currency of the to be transferred amount, which is different from the currency of the debtor's account.
+        required:
+            - Amt
+            - CcyOfTrf
+        type: object
+    Exact4AlphaNumericText:
+        description: |
+            Exact4AlphaNumericText
+            Specifies an alphanumeric string with a length of 4 characters.
+        pattern: ^([0-9A-Za-z]{4,4})$
+        type: string
+    ExchangeRate1:
+        additionalProperties: false
+        description: |
+            ExchangeRate1
+            Further detailed information on the exchange rate that has been used in the payment transaction.
+        properties:
+            CtrctId:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    ContractIdentification
+                    Unique and unambiguous reference to the foreign exchange contract agreed between the initiating party/creditor and the debtor agent.
+            RateTp:
+                $ref: "#/components/schemas/pain09/ExchangeRateType1Code"
+                description: |
+                    RateType
+                    Specifies the type used to complete the currency exchange.
+            UnitCcy:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyCode"
+                description: |
+                    UnitCurrency
+                    Currency in which the rate of exchange is expressed in a currency exchange. In the example 1GBP = xxxCUR, the unit currency is GBP.
+            XchgRate:
+                $ref: "#/components/schemas/pain09/BaseOneRate"
+                description: |
+                    ExchangeRate
+                    The factor used for conversion of an amount from one currency to another. This reflects the price at which one currency was bought with another currency.
+        type: object
+    ExchangeRateType1Code:
+        description: |
+            ExchangeRateType1Code
+            Specifies a type of financial or commercial document.
+        enum:
+            - SPOT
+            - SALE
+            - AGRD
+        type: string
+    ExternalAccountIdentification1Code:
+        description: |
+            ExternalAccountIdentification1Code
+            Specifies the external account identification scheme name code in the format of character string with a maximum length of 4 characters.
+            
+            The list of valid codes is an external code list published separately.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 4
+        minLength: 1
+        type: string
+    ExternalCashAccountType1Code:
+        description: |
+            ExternalCashAccountType1Code
+            Specifies the nature, or use, of the cash account in the format of character string with a maximum length of 4 characters.
+            
+            The list of valid codes is an external code list published separately.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 4
+        minLength: 1
+        type: string
+    ExternalCategoryPurpose1Code:
+        description: |
+            ExternalCategoryPurpose1Code
+            Specifies the category purpose, as published in an external category purpose code list.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 4
+        minLength: 1
+        type: string
+    ExternalClearingSystemIdentification1Code:
+        description: |
+            ExternalClearingSystemIdentification1Code
+            Specifies the clearing system identification code, as published in an external clearing system identification code list.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 5
+        minLength: 1
+        type: string
+    ExternalDiscountAmountType1Code:
+        description: |
+            ExternalDiscountAmountType1Code
+            Specifies the nature, or use, of the amount in the format of character string with a maximum length of 4 characters.
+            
+            The list of valid codes is an external code list published separately.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 4
+        minLength: 1
+        type: string
+    ExternalDocumentLineType1Code:
+        description: |
+            ExternalDocumentLineType1Code
+            Specifies the document line type as published in an external document type code list.
+        maxLength: 4
+        minLength: 1
+        type: string
+    ExternalFinancialInstitutionIdentification1Code:
+        description: |
+            ExternalFinancialInstitutionIdentification1Code
+            Specifies the external financial institution identification scheme name code in the format of character string with a maximum length of 4 characters.
+            
+            The list of valid codes is an external code list published separately.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 4
+        minLength: 1
+        type: string
+    ExternalGarnishmentType1Code:
+        description: |
+            ExternalGarnishmentType1Code
+            Specifies the garnishment type as published in an external document type code list.
+        maxLength: 4
+        minLength: 1
+        type: string
+    ExternalLocalInstrument1Code:
+        description: |
+            ExternalLocalInstrument1Code
+            Specifies the external local instrument code in the format of character string with a maximum length of 35 characters.
+            
+            The list of valid codes is an external code list published separately.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 35
+        minLength: 1
+        type: string
+    ExternalOrganisationIdentification1Code:
+        description: |
+            ExternalOrganisationIdentification1Code
+            Specifies the external organisation identification scheme name code in the format of character string with a maximum length of 4 characters.
+            
+            The list of valid codes is an external code list published separately.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 4
+        minLength: 1
+        type: string
+    ExternalPersonIdentification1Code:
+        description: |
+            ExternalPersonIdentification1Code
+            Specifies the external person identification scheme name code in the format of character string with a maximum length of 4 characters.
+            
+            The list of valid codes is an external code list published separately.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 4
+        minLength: 1
+        type: string
+    ExternalProxyAccountType1Code:
+        description: |
+            ExternalProxyAccountType1Code
+            Specifies the external proxy account type code, as published in the proxy account type external code set.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 4
+        minLength: 1
+        type: string
+    ExternalPurpose1Code:
+        description: |
+            ExternalPurpose1Code
+            Specifies the external purpose code in the format of character string with a maximum length of 4 characters.
+            
+            The list of valid codes is an external code list published separately.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 4
+        minLength: 1
+        type: string
+    ExternalServiceLevel1Code:
+        description: |
+            ExternalServiceLevel1Code
+            Specifies the external service level code in the format of character string with a maximum length of 4 characters.
+            
+            The list of valid codes is an external code list published separately.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 4
+        minLength: 1
+        type: string
+    ExternalTaxAmountType1Code:
+        description: |
+            ExternalTaxAmountType1Code
+            Specifies the nature, or use, of the amount in the format of character string with a maximum length of 4 characters.
+            
+            The list of valid codes is an external code list published separately.
+            
+            External code sets can be downloaded from www.iso20022.org.
+        maxLength: 4
+        minLength: 1
+        type: string
+    FinancialIdentificationSchemeName1Choice:
+        additionalProperties: false
+        description: |
+            FinancialIdentificationSchemeName1Choice
+            Sets of elements to identify a name of the organisation identification scheme.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalFinancialInstitutionIdentification1Code"
+                description: |
+                    Code
+                    Name of the identification scheme, in a coded form as published in an external list.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Name of the identification scheme, in a free text form.
+        type: object
+    FinancialInstitutionIdentification18:
+        additionalProperties: false
+        description: |
+            FinancialInstitutionIdentification18
+            Specifies the details to identify a financial institution.
+        properties:
+            BICFI:
+                $ref: "#/components/schemas/pain09/BICFIDec2014Identifier"
+                description: |
+                    BICFI
+                    Code allocated to a financial institution by the ISO 9362 Registration Authority as described in ISO 9362 "Banking - Banking telecommunication messages - Business identifier code (BIC)".
+            ClrSysMmbId:
+                $ref: "#/components/schemas/pain09/ClearingSystemMemberIdentification2"
+                description: |
+                    ClearingSystemMemberIdentification
+                    Information used to identify a member within a clearing system.
+            LEI:
+                $ref: "#/components/schemas/pain09/LEIIdentifier"
+                description: |
+                    LEI
+                    Legal entity identifier of the financial institution.
+            Nm:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    Name
+                    Name by which an agent is known and which is usually used to identify that agent.
+            Othr:
+                $ref: "#/components/schemas/pain09/GenericFinancialIdentification1"
+                description: |
+                    Other
+                    Unique identification of an agent, as assigned by an institution, using an identification scheme.
+            PstlAdr:
+                $ref: "#/components/schemas/pain09/PostalAddress24"
+                description: |
+                    PostalAddress
+                    Information that locates and identifies a specific address, as defined by postal services.
+        type: object
+    Garnishment3:
+        additionalProperties: false
+        description: |
+            Garnishment3
+            Provides remittance information about a payment for garnishment-related purposes.
+        properties:
+            Dt:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    Date
+                    Date of payment which garnishment was taken from.
+            FmlyMdclInsrncInd:
+                $ref: "#/components/schemas/pain09/TrueFalseIndicator"
+                description: |
+                    FamilyMedicalInsuranceIndicator
+                    Indicates if the person to whom the garnishment applies (that is, the ultimate debtor) has family medical insurance coverage available.
+            Grnshee:
+                $ref: "#/components/schemas/pain09/PartyIdentification135"
+                description: |
+                    Garnishee
+                    Ultimate party that owes an amount of money to the (ultimate) creditor, in this case, to the garnisher.
+            GrnshmtAdmstr:
+                $ref: "#/components/schemas/pain09/PartyIdentification135"
+                description: |
+                    GarnishmentAdministrator
+                    Party on the credit side of the transaction who administers the garnishment on behalf of the ultimate beneficiary.
+            MplyeeTermntnInd:
+                $ref: "#/components/schemas/pain09/TrueFalseIndicator"
+                description: |
+                    EmployeeTerminationIndicator
+                    Indicates if the employment of the person to whom the garnishment applies (that is, the ultimate debtor) has been terminated.
+            RefNb:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    ReferenceNumber
+                    Reference information that is specific to the agency receiving the garnishment.
+            RmtdAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    RemittedAmount
+                    Amount of money remitted for the referred document.
+            Tp:
+                $ref: "#/components/schemas/pain09/GarnishmentType1"
+                description: |
+                    Type
+                    Specifies the type of garnishment.
+        required:
+            - Tp
+        type: object
+    GarnishmentType1:
+        additionalProperties: false
+        description: |
+            GarnishmentType1
+            Specifies the type of garnishment.
+        properties:
+            CdOrPrtry:
+                $ref: "#/components/schemas/pain09/GarnishmentType1Choice"
+                description: |
+                    CodeOrProprietary
+                    Provides the type details of the garnishment.
+            Issr:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Issuer
+                    Identification of the issuer of the garnishment type.
+        required:
+            - CdOrPrtry
+        type: object
+    GarnishmentType1Choice:
+        additionalProperties: false
+        description: |
+            GarnishmentType1Choice
+            Specifies the type of garnishment.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalGarnishmentType1Code"
+                description: |
+                    Code
+                    Garnishment type in a coded form.
+                    
+                    Would suggest this to be an External Code List to contain:
+                    
+                    GNCS    Garnishment from a third party payer for Child Support
+                    
+                    GNDP    Garnishment from a Direct Payer for Child Support
+                    
+                    GTPP     Garnishment from a third party payer to taxing agency.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Proprietary identification of the type of garnishment.
+        type: object
+    GenericAccountIdentification1:
+        additionalProperties: false
+        description: |
+            GenericAccountIdentification1
+            Information related to a generic account identification.
+        properties:
+            Id:
+                $ref: "#/components/schemas/pain09/Max34Text"
+                description: |
+                    Identification
+                    Identification assigned by an institution.
+            Issr:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Issuer
+                    Entity that assigns the identification.
+            SchmeNm:
+                $ref: "#/components/schemas/pain09/AccountSchemeName1Choice"
+                description: |
+                    SchemeName
+                    Name of the identification scheme.
+        required:
+            - Id
+        type: object
+    GenericFinancialIdentification1:
+        additionalProperties: false
+        description: |
+            GenericFinancialIdentification1
+            Information related to an identification of a financial institution.
+        properties:
+            Id:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Identification
+                    Unique and unambiguous identification of a person.
+            Issr:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Issuer
+                    Entity that assigns the identification.
+            SchmeNm:
+                $ref: "#/components/schemas/pain09/FinancialIdentificationSchemeName1Choice"
+                description: |
+                    SchemeName
+                    Name of the identification scheme.
+        required:
+            - Id
+        type: object
+    GenericIdentification30:
+        additionalProperties: false
+        description: |
+            GenericIdentification30
+            Information related to an identification, for example, party identification or account identification.
+        properties:
+            Id:
+                $ref: "#/components/schemas/pain09/Exact4AlphaNumericText"
+                description: |
+                    Identification
+                    Proprietary information, often a code, issued by the data source scheme issuer.
+            Issr:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Issuer
+                    Entity that assigns the identification.
+            SchmeNm:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    SchemeName
+                    Short textual description of the scheme.
+        required:
+            - Id
+            - Issr
+        type: object
+    GenericOrganisationIdentification1:
+        additionalProperties: false
+        description: |
+            GenericOrganisationIdentification1
+            Information related to an identification of an organisation.
+        properties:
+            Id:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Identification
+                    Identification assigned by an institution.
+            Issr:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Issuer
+                    Entity that assigns the identification.
+            SchmeNm:
+                $ref: "#/components/schemas/pain09/OrganisationIdentificationSchemeName1Choice"
+                description: |
+                    SchemeName
+                    Name of the identification scheme.
+        required:
+            - Id
+        type: object
+    GenericPersonIdentification1:
+        additionalProperties: false
+        description: |
+            GenericPersonIdentification1
+            Information related to an identification of a person.
+        properties:
+            Id:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Identification
+                    Unique and unambiguous identification of a person.
+            Issr:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Issuer
+                    Entity that assigns the identification.
+            SchmeNm:
+                $ref: "#/components/schemas/pain09/PersonIdentificationSchemeName1Choice"
+                description: |
+                    SchemeName
+                    Name of the identification scheme.
+        required:
+            - Id
+        type: object
+    GroupHeader85:
+        additionalProperties: false
+        description: |
+            GroupHeader85
+            Set of characteristics shared by all individual transactions included in the message.
+        properties:
+            Authstn:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/Authorisation1Choice"
+                        description: |
+                            Authorisation
+                            User identification or any user key to be used to check whether the initiating party is allowed to initiate transactions from the account specified in the message.
+                            
+                            Usage: The content is not of a technical nature, but reflects the organisational structure at the initiating side.
+                            The authorisation element can typically be used in relay scenarios, payment initiations, payment returns or payment reversals that are initiated on behalf of a party different from the initiating party.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/Authorisation1Choice"
+                            description: |
+                                Authorisation
+                                User identification or any user key to be used to check whether the initiating party is allowed to initiate transactions from the account specified in the message.
+                                
+                                Usage: The content is not of a technical nature, but reflects the organisational structure at the initiating side.
+                                The authorisation element can typically be used in relay scenarios, payment initiations, payment returns or payment reversals that are initiated on behalf of a party different from the initiating party.
+                        maxItems: 2
+                        type: array
+            CreDtTm:
+                $ref: "#/components/schemas/pain09/ISODateTime"
+                description: |
+                    CreationDateTime
+                    Date and time at which the message was created.
+            CtrlSum:
+                $ref: "#/components/schemas/pain09/DecimalNumber"
+                description: |
+                    ControlSum
+                    Total of all individual amounts included in the message, irrespective of currencies.
+            FwdgAgt:
+                $ref: "#/components/schemas/pain09/BranchAndFinancialInstitutionIdentification6"
+                description: |
+                    ForwardingAgent
+                    Financial institution that receives the instruction from the initiating party and forwards it to the next agent in the payment chain for execution.
+            InitgPty:
+                $ref: "#/components/schemas/pain09/PartyIdentification135"
+                description: |
+                    InitiatingParty
+                    Party that initiates the payment.
+                    
+                    Usage: This can either be the debtor or the party that initiates the credit transfer on behalf of the debtor.
+            MsgId:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    MessageIdentification
+                    Point to point reference, as assigned by the instructing party, and sent to the next party in the chain to unambiguously identify the message.
+                    Usage: The instructing party has to make sure that MessageIdentification is unique per instructed party for a pre-agreed period.
+            NbOfTxs:
+                $ref: "#/components/schemas/pain09/Max15NumericText"
+                description: |
+                    NumberOfTransactions
+                    Number of individual transactions contained in the message.
+        required:
+            - CreDtTm
+            - InitgPty
+            - MsgId
+            - NbOfTxs
+        type: object
+    IBAN2007Identifier:
+        description: |
+            IBAN2007Identifier
+            The International Bank Account Number is a code used internationally by financial institutions to uniquely identify the account of a customer at a financial institution as described in the 2007 edition of the ISO 13616 standard "Banking and related financial services - International Bank Account Number (IBAN)" and replaced by the more recent edition of the standard.
+        pattern: ^([A-Z]{2,2}[0-9]{2,2}[0-9A-Za-z]{1,30})$
+        type: string
+    ISODate:
+        description: |
+            ISODate
+            A particular point in the progression of time in a calendar year expressed in the YYYY-MM-DD format. This representation is defined in "XML Schema Part 2: Datatypes Second Edition - W3C Recommendation 28 October 2004" which is aligned with ISO 8601.
+        type: string
+    ISODateTime:
+        description: |
+            ISODateTime
+            A particular point in the progression of time defined by a mandatory date and a mandatory time component, expressed in either UTC time format (YYYY-MM-DDThh:mm:ss.sssZ), local time with UTC offset format (YYYY-MM-DDThh:mm:ss.sss+/-hh:mm), or local time format (YYYY-MM-DDThh:mm:ss.sss). These representations are defined in "XML Schema Part 2: Datatypes Second Edition - W3C Recommendation 28 October 2004" which is aligned with ISO 8601.
+            Note on the time format:
+            1) beginning / end of calendar day
+            00:00:00 = the beginning of a calendar day
+            24:00:00 = the end of a calendar day
+            2) fractions of second in time format
+            Decimal fractions of seconds may be included. In this case, the involved parties shall agree on the maximum number of digits that are allowed.
+        type: string
+    Instruction3Code:
+        description: |
+            Instruction3Code
+            Specifies further instructions concerning the processing of a payment instruction, provided by the sending clearing agent to the next agent(s).
+        enum:
+            - CHQB
+            - HOLD
+            - PHOB
+            - TELB
+        type: string
+    InstructionForCreditorAgent1:
+        additionalProperties: false
+        description: |
+            InstructionForCreditorAgent1
+            Further information related to the processing of the payment instruction that may need to be acted upon by the creditor's agent. The instruction may relate to a level of service, or may be an instruction that has to be executed by the creditor's agent, or may be information required by the creditor's agent.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/Instruction3Code"
+                description: |
+                    Code
+                    Coded information related to the processing of the payment instruction, provided by the initiating party, and intended for the creditor's agent.
+            InstrInf:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    InstructionInformation
+                    Further information complementing the coded instruction or instruction to the creditor's agent that is bilaterally agreed or specific to a user community.
+        type: object
+    LEIIdentifier:
+        description: |
+            LEIIdentifier
+            Legal Entity Identifier is a code allocated to a party as described in ISO 17442 "Financial Services - Legal Entity Identifier (LEI)".
+        pattern: ^([0-9A-Z]{18,18}[0-9]{2,2})$
+        type: string
+    LocalInstrument2Choice:
+        additionalProperties: false
+        description: |
+            LocalInstrument2Choice
+            Set of elements that further identifies the type of local instruments being requested by the initiating party.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalLocalInstrument1Code"
+                description: |
+                    Code
+                    Specifies the local instrument, as published in an external local instrument code list.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Specifies the local instrument, as a proprietary code.
+        type: object
+    Max10Text:
+        description: |
+            Max10Text
+            Specifies a character string with a maximum length of 10 characters.
+        maxLength: 10
+        minLength: 1
+        type: string
+    Max128Text:
+        description: |
+            Max128Text
+            Specifies a character string with a maximum length of 128 characters.
+        maxLength: 128
+        minLength: 1
+        type: string
+    Max140Text:
+        description: |
+            Max140Text
+            Specifies a character string with a maximum length of 140 characters.
+        maxLength: 140
+        minLength: 1
+        type: string
+    Max15NumericText:
+        description: |
+            Max15NumericText
+            Specifies a numeric string with a maximum length of 15 digits.
+        pattern: ^([0-9]{1,15})$
+        type: string
+    Max16Text:
+        description: |
+            Max16Text
+            Specifies a character string with a maximum length of 16 characters.
+        maxLength: 16
+        minLength: 1
+        type: string
+    Max2048Text:
+        description: |
+            Max2048Text
+            Specifies a character string with a maximum length of 2048 characters.
+        maxLength: 2048
+        minLength: 1
+        type: string
+    Max34Text:
+        description: |
+            Max34Text
+            Specifies a character string with a maximum length of 34 characters.
+        maxLength: 34
+        minLength: 1
+        type: string
+    Max350Text:
+        description: |
+            Max350Text
+            Specifies a character string with a maximum length of 350 characters.
+        maxLength: 350
+        minLength: 1
+        type: string
+    Max35Text:
+        description: |
+            Max35Text
+            Specifies a character string with a maximum length of 35 characters.
+        maxLength: 35
+        minLength: 1
+        type: string
+    Max4Text:
+        description: |
+            Max4Text
+            Specifies a character string with a maximum length of 4 characters.
+        maxLength: 4
+        minLength: 1
+        type: string
+    Max70Text:
+        description: |
+            Max70Text
+            Specifies a character string with a maximum length of 70characters.
+        maxLength: 70
+        minLength: 1
+        type: string
+    NameAndAddress16:
+        additionalProperties: false
+        description: |
+            NameAndAddress16
+            Information that locates and identifies a party.
+        properties:
+            Adr:
+                $ref: "#/components/schemas/pain09/PostalAddress24"
+                description: |
+                    Address
+                    Postal address of a party.
+            Nm:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    Name
+                    Name by which a party is known and is usually used to identify that party.
+        required:
+            - Adr
+            - Nm
+        type: object
+    NamePrefix2Code:
+        description: |
+            NamePrefix2Code
+            Specifies the terms used to formally address a person.
+        enum:
+            - DOCT
+            - MADM
+            - MISS
+            - MIST
+            - MIKS
+        type: string
+    Number:
+        description: |
+            Number
+            Number of objects represented as an integer.
+        type: number
+    OrganisationIdentification29:
+        additionalProperties: false
+        description: |
+            OrganisationIdentification29
+            Unique and unambiguous way to identify an organisation.
+        properties:
+            AnyBIC:
+                $ref: "#/components/schemas/pain09/AnyBICDec2014Identifier"
+                description: |
+                    AnyBIC
+                    Business identification code of the organisation.
+            LEI:
+                $ref: "#/components/schemas/pain09/LEIIdentifier"
+                description: |
+                    LEI
+                    Legal entity identification as an alternate identification for a party.
+            Othr:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/GenericOrganisationIdentification1"
+                        description: |
+                            Other
+                            Unique identification of an organisation, as assigned by an institution, using an identification scheme.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/GenericOrganisationIdentification1"
+                            description: |
+                                Other
+                                Unique identification of an organisation, as assigned by an institution, using an identification scheme.
+                        type: array
+        type: object
+    OrganisationIdentificationSchemeName1Choice:
+        additionalProperties: false
+        description: |
+            OrganisationIdentificationSchemeName1Choice
+            Sets of elements to identify a name of the organisation identification scheme.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalOrganisationIdentification1Code"
+                description: |
+                    Code
+                    Name of the identification scheme, in a coded form as published in an external list.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Name of the identification scheme, in a free text form.
+        type: object
+    OtherContact1:
+        additionalProperties: false
+        description: |
+            OtherContact1
+            Communication device number or electronic address used for communication.
+        properties:
+            ChanlTp:
+                $ref: "#/components/schemas/pain09/Max4Text"
+                description: |
+                    ChannelType
+                    Method used to contact the financial institution’s contact for the specific tax region.
+            Id:
+                $ref: "#/components/schemas/pain09/Max128Text"
+                description: |
+                    Identification
+                    Communication value such as phone number or email address.
+        required:
+            - ChanlTp
+        type: object
+    Party38Choice:
+        additionalProperties: false
+        description: |
+            Party38Choice
+            Nature or use of the account.
+        properties:
+            OrgId:
+                $ref: "#/components/schemas/pain09/OrganisationIdentification29"
+                description: |
+                    OrganisationIdentification
+                    Unique and unambiguous way to identify an organisation.
+            PrvtId:
+                $ref: "#/components/schemas/pain09/PersonIdentification13"
+                description: |
+                    PrivateIdentification
+                    Unique and unambiguous identification of a person, for example a passport.
+        type: object
+    PartyIdentification135:
+        additionalProperties: false
+        description: |
+            PartyIdentification135
+            Specifies the identification of a person or an organisation.
+        properties:
+            CtctDtls:
+                $ref: "#/components/schemas/pain09/Contact4"
+                description: |
+                    ContactDetails
+                    Set of elements used to indicate how to contact the party.
+            CtryOfRes:
+                $ref: "#/components/schemas/pain09/CountryCode"
+                description: |
+                    CountryOfResidence
+                    Country in which a person resides (the place of a person's home). In the case of a company, it is the country from which the affairs of that company are directed.
+            Id:
+                $ref: "#/components/schemas/pain09/Party38Choice"
+                description: |
+                    Identification
+                    Unique and unambiguous identification of a party.
+            Nm:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    Name
+                    Name by which a party is known and which is usually used to identify that party.
+            PstlAdr:
+                $ref: "#/components/schemas/pain09/PostalAddress24"
+                description: |
+                    PostalAddress
+                    Information that locates and identifies a specific address, as defined by postal services.
+        type: object
+    PaymentIdentification6:
+        additionalProperties: false
+        description: |
+            PaymentIdentification6
+            Provides further means of referencing a payment transaction.
+        properties:
+            EndToEndId:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    EndToEndIdentification
+                    Unique identification assigned by the initiating party to unambiguously identify the transaction. This identification is passed on, unchanged, throughout the entire end-to-end chain.
+                    
+                    
+                    
+                    Usage: The end-to-end identification can be used for reconciliation or to link tasks relating to the transaction. It can be included in several messages related to the transaction.
+            InstrId:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    InstructionIdentification
+                    Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction.
+                    
+                    
+                    
+                    Usage: The instruction identification is a point to point reference that can be used between the instructing party and the instructed party to refer to the individual instruction. It can be included in several messages related to the instruction.
+            UETR:
+                $ref: "#/components/schemas/pain09/UUIDv4Identifier"
+                description: |
+                    UETR
+                    Universally unique identifier to provide an end-to-end reference of a payment transaction.
+        required:
+            - EndToEndId
+        type: object
+    PaymentInstruction30:
+        additionalProperties: false
+        description: |
+            PaymentInstruction30
+            Characteristics that apply to the debit side of the payment transactions included in the credit transfer initiation.
+        properties:
+            BtchBookg:
+                $ref: "#/components/schemas/pain09/BatchBookingIndicator"
+                description: |
+                    BatchBooking
+                    Identifies whether a single entry per individual transaction or a batch entry for the sum of the amounts of all transactions within the group of a message is requested.
+                    Usage: Batch booking is used to request and not order a possible batch booking.
+            CdtTrfTxInf:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/CreditTransferTransaction34"
+                        description: |
+                            CreditTransferTransactionInformation
+                            Provides information on the individual transaction(s) included in the message.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/CreditTransferTransaction34"
+                            description: |
+                                CreditTransferTransactionInformation
+                                Provides information on the individual transaction(s) included in the message.
+                        minItems: 1
+                        type: array
+            ChrgBr:
+                $ref: "#/components/schemas/pain09/ChargeBearerType1Code"
+                description: |
+                    ChargeBearer
+                    Specifies which party/parties will bear the charges associated with the processing of the payment transaction.
+            ChrgsAcct:
+                $ref: "#/components/schemas/pain09/CashAccount38"
+                description: |
+                    ChargesAccount
+                    Account used to process charges associated with a transaction.
+                    
+                    Usage: Charges account should be used when charges have to be booked to an account different from the account identified in debtor's account.
+            ChrgsAcctAgt:
+                $ref: "#/components/schemas/pain09/BranchAndFinancialInstitutionIdentification6"
+                description: |
+                    ChargesAccountAgent
+                    Agent that services a charges account.
+                    
+                    Usage: Charges account agent should only be used when the charges account agent is different from the debtor agent.
+            CtrlSum:
+                $ref: "#/components/schemas/pain09/DecimalNumber"
+                description: |
+                    ControlSum
+                    Total of all individual amounts included in the group, irrespective of currencies.
+            Dbtr:
+                $ref: "#/components/schemas/pain09/PartyIdentification135"
+                description: |
+                    Debtor
+                    Party that owes an amount of money to the (ultimate) creditor.
+            DbtrAcct:
+                $ref: "#/components/schemas/pain09/CashAccount38"
+                description: |
+                    DebtorAccount
+                    Unambiguous identification of the account of the debtor to which a debit entry will be made as a result of the transaction.
+            DbtrAgt:
+                $ref: "#/components/schemas/pain09/BranchAndFinancialInstitutionIdentification6"
+                description: |
+                    DebtorAgent
+                    Financial institution servicing an account for the debtor.
+            DbtrAgtAcct:
+                $ref: "#/components/schemas/pain09/CashAccount38"
+                description: |
+                    DebtorAgentAccount
+                    Unambiguous identification of the account of the debtor agent at its servicing agent in the payment chain.
+            InstrForDbtrAgt:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    InstructionForDebtorAgent
+                    Further information related to the processing of the payment instruction, that may need to be acted upon by the debtor agent, depending on agreement between debtor and the debtor agent.
+                    
+                    
+                    
+                    Usage: when present, then the instructions for the debtor agent apply for all credit transfer transaction information occurrences, present in the payment information.
+            NbOfTxs:
+                $ref: "#/components/schemas/pain09/Max15NumericText"
+                description: |
+                    NumberOfTransactions
+                    Number of individual transactions contained in the payment information group.
+            PmtInfId:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    PaymentInformationIdentification
+                    Unique identification, as assigned by a sending party, to unambiguously identify the payment information group within the message.
+            PmtMtd:
+                $ref: "#/components/schemas/pain09/PaymentMethod3Code"
+                description: |
+                    PaymentMethod
+                    Specifies the means of payment that will be used to move the amount of money.
+            PmtTpInf:
+                $ref: "#/components/schemas/pain09/PaymentTypeInformation26"
+                description: |
+                    PaymentTypeInformation
+                    Set of elements used to further specify the type of transaction.
+            PoolgAdjstmntDt:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    PoolingAdjustmentDate
+                    Date used for the correction of the value date of a cash pool movement that has been posted with a different value date.
+            ReqdExctnDt:
+                $ref: "#/components/schemas/pain09/DateAndDateTime2Choice"
+                description: |
+                    RequestedExecutionDate
+                    Date at which the initiating party requests the clearing agent to process the payment. 
+                    Usage: This is the date on which the debtor's account is to be debited. If payment by cheque, the date when the cheque must be generated by the bank.
+            UltmtDbtr:
+                $ref: "#/components/schemas/pain09/PartyIdentification135"
+                description: |
+                    UltimateDebtor
+                    Ultimate party that owes an amount of money to the (ultimate) creditor.
+        required:
+            - CdtTrfTxInf
+            - Dbtr
+            - DbtrAcct
+            - DbtrAgt
+            - PmtInfId
+            - PmtMtd
+            - ReqdExctnDt
+        type: object
+    PaymentMethod3Code:
+        description: |
+            PaymentMethod3Code
+            Specifies the transfer method that will be used to transfer an amount of money.
+        enum:
+            - CHK
+            - TRF
+            - TRA
+        type: string
+    PaymentTypeInformation26:
+        additionalProperties: false
+        description: |
+            PaymentTypeInformation26
+            Provides further details of the type of payment.
+        properties:
+            CtgyPurp:
+                $ref: "#/components/schemas/pain09/CategoryPurpose1Choice"
+                description: |
+                    CategoryPurpose
+                    Specifies the high level purpose of the instruction based on a set of pre-defined categories.
+                    Usage: This is used by the initiating party to provide information concerning the processing of the payment. It is likely to trigger special processing by any of the agents involved in the payment chain.
+            InstrPrty:
+                $ref: "#/components/schemas/pain09/Priority2Code"
+                description: |
+                    InstructionPriority
+                    Indicator of the urgency or order of importance that the instructing party would like the instructed party to apply to the processing of the instruction.
+            LclInstrm:
+                $ref: "#/components/schemas/pain09/LocalInstrument2Choice"
+                description: |
+                    LocalInstrument
+                    User community specific instrument.
+                    
+                    Usage: This element is used to specify a local instrument, local clearing option and/or further qualify the service or service level.
+            SvcLvl:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/ServiceLevel8Choice"
+                        description: |
+                            ServiceLevel
+                            Agreement under which or rules under which the transaction should be processed.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/ServiceLevel8Choice"
+                            description: |
+                                ServiceLevel
+                                Agreement under which or rules under which the transaction should be processed.
+                        type: array
+        type: object
+    PercentageRate:
+        description: |
+            PercentageRate
+            Rate expressed as a percentage, that is, in hundredths, for example, 0.7 is 7/10 of a percent, and 7.0 is 7%.
+        type: number
+    PersonIdentification13:
+        additionalProperties: false
+        description: |
+            PersonIdentification13
+            Unique and unambiguous way to identify a person.
+        properties:
+            DtAndPlcOfBirth:
+                $ref: "#/components/schemas/pain09/DateAndPlaceOfBirth1"
+                description: |
+                    DateAndPlaceOfBirth
+                    Date and place of birth of a person.
+            Othr:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/GenericPersonIdentification1"
+                        description: |
+                            Other
+                            Unique identification of a person, as assigned by an institution, using an identification scheme.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/GenericPersonIdentification1"
+                            description: |
+                                Other
+                                Unique identification of a person, as assigned by an institution, using an identification scheme.
+                        type: array
+        type: object
+    PersonIdentificationSchemeName1Choice:
+        additionalProperties: false
+        description: |
+            PersonIdentificationSchemeName1Choice
+            Sets of elements to identify a name of the identification scheme.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalPersonIdentification1Code"
+                description: |
+                    Code
+                    Name of the identification scheme, in a coded form as published in an external list.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Name of the identification scheme, in a free text form.
+        type: object
+    PhoneNumber:
+        description: |
+            PhoneNumber
+            The collection of information which identifies a specific phone or FAX number as defined by telecom services.
+            It consists of a "+" followed by the country code (from 1 to 3 characters) then a "-" and finally, any combination of numbers, "(", ")", "+" and "-" (up to 30 characters).
+        pattern: ^(\+[0-9]{1,3}\-[\(-\)\+\-0-9]{1,30})$
+        type: string
+    PostalAddress24:
+        additionalProperties: false
+        description: |
+            PostalAddress24
+            Information that locates and identifies a specific address, as defined by postal services.
+        properties:
+            AdrLine:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/Max70Text"
+                        description: |
+                            AddressLine
+                            Information that locates and identifies a specific address, as defined by postal services, presented in free format text.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/Max70Text"
+                            description: |
+                                AddressLine
+                                Information that locates and identifies a specific address, as defined by postal services, presented in free format text.
+                        maxItems: 7
+                        type: array
+            AdrTp:
+                $ref: "#/components/schemas/pain09/AddressType3Choice"
+                description: |
+                    AddressType
+                    Identifies the nature of the postal address.
+            BldgNb:
+                $ref: "#/components/schemas/pain09/Max16Text"
+                description: |
+                    BuildingNumber
+                    Number that identifies the position of a building on a street.
+            BldgNm:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    BuildingName
+                    Name of the building or house.
+            Ctry:
+                $ref: "#/components/schemas/pain09/CountryCode"
+                description: |
+                    Country
+                    Nation with its own government.
+            CtrySubDvsn:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    CountrySubDivision
+                    Identifies a subdivision of a country such as state, region, county.
+            Dept:
+                $ref: "#/components/schemas/pain09/Max70Text"
+                description: |
+                    Department
+                    Identification of a division of a large organisation or building.
+            DstrctNm:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    DistrictName
+                    Identifies a subdivision within a country sub-division.
+            Flr:
+                $ref: "#/components/schemas/pain09/Max70Text"
+                description: |
+                    Floor
+                    Floor or storey within a building.
+            PstBx:
+                $ref: "#/components/schemas/pain09/Max16Text"
+                description: |
+                    PostBox
+                    Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for.
+            PstCd:
+                $ref: "#/components/schemas/pain09/Max16Text"
+                description: |
+                    PostCode
+                    Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail.
+            Room:
+                $ref: "#/components/schemas/pain09/Max70Text"
+                description: |
+                    Room
+                    Building room number.
+            StrtNm:
+                $ref: "#/components/schemas/pain09/Max70Text"
+                description: |
+                    StreetName
+                    Name of a street or thoroughfare.
+            SubDept:
+                $ref: "#/components/schemas/pain09/Max70Text"
+                description: |
+                    SubDepartment
+                    Identification of a sub-division of a large organisation or building.
+            TwnLctnNm:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    TownLocationName
+                    Specific location name within the town.
+            TwnNm:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    TownName
+                    Name of a built-up area, with defined boundaries, and a local government.
+        type: object
+    PreferredContactMethod1Code:
+        description: |
+            PreferredContactMethod1Code
+            Preferred method used to reach the individual contact within an organisation.
+        enum:
+            - LETT
+            - MAIL
+            - PHON
+            - FAXX
+            - CELL
+        type: string
+    Priority2Code:
+        description: |
+            Priority2Code
+            Specifies the priority level of an event.
+        enum:
+            - HIGH
+            - NORM
+        type: string
+    ProxyAccountIdentification1:
+        additionalProperties: false
+        description: |
+            ProxyAccountIdentification1
+            Information related to a proxy  identification of the account.
+        properties:
+            Id:
+                $ref: "#/components/schemas/pain09/Max2048Text"
+                description: |
+                    Identification
+                    Identification used to indicate the account identification under another specified name.
+            Tp:
+                $ref: "#/components/schemas/pain09/ProxyAccountType1Choice"
+                description: |
+                    Type
+                    Type of the proxy identification.
+        required:
+            - Id
+        type: object
+    ProxyAccountType1Choice:
+        additionalProperties: false
+        description: |
+            ProxyAccountType1Choice
+            Specifies the scheme used for the identification of an account alias.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalProxyAccountType1Code"
+                description: |
+                    Code
+                    Name of the identification scheme, in a coded form as published in an external list.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Name of the identification scheme, in a free text form.
+        type: object
+    Purpose2Choice:
+        additionalProperties: false
+        description: |
+            Purpose2Choice
+            Specifies the underlying reason for the payment transaction.
+            Usage: Purpose is used by the end-customers, that is initiating party, (ultimate) debtor, (ultimate) creditor to provide information concerning the nature of the payment. Purpose is a content element, which is not used for processing by any of the agents involved in the payment chain.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalPurpose1Code"
+                description: |
+                    Code
+                    Underlying reason for the payment transaction, as published in an external purpose code list.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Purpose, in a proprietary form.
+        type: object
+    ReferredDocumentInformation7:
+        additionalProperties: false
+        description: |
+            ReferredDocumentInformation7
+            Set of elements used to identify the documents referred to in the remittance information.
+        properties:
+            LineDtls:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/DocumentLineInformation1"
+                        description: |
+                            LineDetails
+                            Set of elements used to provide the content of the referred document line.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/DocumentLineInformation1"
+                            description: |
+                                LineDetails
+                                Set of elements used to provide the content of the referred document line.
+                        type: array
+            Nb:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Number
+                    Unique and unambiguous identification of the referred document.
+            RltdDt:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    RelatedDate
+                    Date associated with the referred document.
+            Tp:
+                $ref: "#/components/schemas/pain09/ReferredDocumentType4"
+                description: |
+                    Type
+                    Specifies the type of referred document.
+        type: object
+    ReferredDocumentType3Choice:
+        additionalProperties: false
+        description: |
+            ReferredDocumentType3Choice
+            Specifies the type of the document referred in the remittance information.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/DocumentType6Code"
+                description: |
+                    Code
+                    Document type in a coded form.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Proprietary identification of the type of the remittance document.
+        type: object
+    ReferredDocumentType4:
+        additionalProperties: false
+        description: |
+            ReferredDocumentType4
+            Specifies the type of the document referred in the remittance information.
+        properties:
+            CdOrPrtry:
+                $ref: "#/components/schemas/pain09/ReferredDocumentType3Choice"
+                description: |
+                    CodeOrProprietary
+                    Provides the type details of the referred document.
+            Issr:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Issuer
+                    Identification of the issuer of the reference document type.
+        required:
+            - CdOrPrtry
+        type: object
+    RegulatoryAuthority2:
+        additionalProperties: false
+        description: |
+            RegulatoryAuthority2
+            Entity requiring the regulatory reporting information.
+        properties:
+            Ctry:
+                $ref: "#/components/schemas/pain09/CountryCode"
+                description: |
+                    Country
+                    Country of the entity that requires the regulatory reporting information.
+            Nm:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    Name
+                    Name of the entity requiring the regulatory reporting information.
+        type: object
+    RegulatoryReporting3:
+        additionalProperties: false
+        description: |
+            RegulatoryReporting3
+            Information needed due to regulatory and/or statutory requirements.
+        properties:
+            Authrty:
+                $ref: "#/components/schemas/pain09/RegulatoryAuthority2"
+                description: |
+                    Authority
+                    Entity requiring the regulatory reporting information.
+            DbtCdtRptgInd:
+                $ref: "#/components/schemas/pain09/RegulatoryReportingType1Code"
+                description: |
+                    DebitCreditReportingIndicator
+                    Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction.
+            Dtls:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/StructuredRegulatoryReporting3"
+                        description: |
+                            Details
+                            Set of elements used to provide details on the regulatory reporting information.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/StructuredRegulatoryReporting3"
+                            description: |
+                                Details
+                                Set of elements used to provide details on the regulatory reporting information.
+                        type: array
+        type: object
+    RegulatoryReportingType1Code:
+        description: |
+            RegulatoryReportingType1Code
+            Identifies whether the regulatory reporting information applies to the debit side, to the credit side or to both debit and credit sides of the transaction.
+        enum:
+            - CRED
+            - DEBT
+            - BOTH
+        type: string
+    RemittanceAmount2:
+        additionalProperties: false
+        description: |
+            RemittanceAmount2
+            Nature of the amount and currency on a document referred to in the remittance section, typically either the original amount due/payable or the amount actually remitted for the referenced document.
+        properties:
+            AdjstmntAmtAndRsn:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/DocumentAdjustment1"
+                        description: |
+                            AdjustmentAmountAndReason
+                            Specifies detailed information on the amount and reason of the document adjustment.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/DocumentAdjustment1"
+                            description: |
+                                AdjustmentAmountAndReason
+                                Specifies detailed information on the amount and reason of the document adjustment.
+                        type: array
+            CdtNoteAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    CreditNoteAmount
+                    Amount specified for the referred document is the amount of a credit note.
+            DscntApldAmt:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/DiscountAmountAndType1"
+                        description: |
+                            DiscountAppliedAmount
+                            Amount specified for the referred document is the amount of discount to be applied to the amount due and payable to the creditor.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/DiscountAmountAndType1"
+                            description: |
+                                DiscountAppliedAmount
+                                Amount specified for the referred document is the amount of discount to be applied to the amount due and payable to the creditor.
+                        type: array
+            DuePyblAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    DuePayableAmount
+                    Amount specified is the exact amount due and payable to the creditor.
+            RmtdAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    RemittedAmount
+                    Amount of money remitted for the referred document.
+            TaxAmt:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/TaxAmountAndType1"
+                        description: |
+                            TaxAmount
+                            Quantity of cash resulting from the calculation of the tax.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/TaxAmountAndType1"
+                            description: |
+                                TaxAmount
+                                Quantity of cash resulting from the calculation of the tax.
+                        type: array
+        type: object
+    RemittanceAmount3:
+        additionalProperties: false
+        description: |
+            RemittanceAmount3
+            Nature of the amount and currency on a document referred to in the remittance section, typically either the original amount due/payable or the amount actually remitted for the referenced document.
+        properties:
+            AdjstmntAmtAndRsn:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/DocumentAdjustment1"
+                        description: |
+                            AdjustmentAmountAndReason
+                            Specifies detailed information on the amount and reason of the adjustment.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/DocumentAdjustment1"
+                            description: |
+                                AdjustmentAmountAndReason
+                                Specifies detailed information on the amount and reason of the adjustment.
+                        type: array
+            CdtNoteAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    CreditNoteAmount
+                    Amount of a credit note.
+            DscntApldAmt:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/DiscountAmountAndType1"
+                        description: |
+                            DiscountAppliedAmount
+                            Amount of discount to be applied to the amount due and payable to the creditor.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/DiscountAmountAndType1"
+                            description: |
+                                DiscountAppliedAmount
+                                Amount of discount to be applied to the amount due and payable to the creditor.
+                        type: array
+            DuePyblAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    DuePayableAmount
+                    Amount specified is the exact amount due and payable to the creditor.
+            RmtdAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    RemittedAmount
+                    Amount of money remitted.
+            TaxAmt:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/TaxAmountAndType1"
+                        description: |
+                            TaxAmount
+                            Amount of the tax.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/TaxAmountAndType1"
+                            description: |
+                                TaxAmount
+                                Amount of the tax.
+                        type: array
+        type: object
+    RemittanceInformation16:
+        additionalProperties: false
+        description: |
+            RemittanceInformation16
+            Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system.
+        properties:
+            Strd:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/StructuredRemittanceInformation16"
+                        description: |
+                            Structured
+                            Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in a structured form.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/StructuredRemittanceInformation16"
+                            description: |
+                                Structured
+                                Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in a structured form.
+                        type: array
+            Ustrd:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/Max140Text"
+                        description: |
+                            Unstructured
+                            Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/Max140Text"
+                            description: |
+                                Unstructured
+                                Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in an unstructured form.
+                        type: array
+        type: object
+    RemittanceLocation7:
+        additionalProperties: false
+        description: |
+            RemittanceLocation7
+            Provides information on the remittance advice.
+        properties:
+            RmtId:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    RemittanceIdentification
+                    Unique identification, as assigned by the initiating party, to unambiguously identify the remittance information sent separately from the payment instruction, such as a remittance advice.
+            RmtLctnDtls:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/RemittanceLocationData1"
+                        description: |
+                            RemittanceLocationDetails
+                            Set of elements used to provide information on the location and/or delivery of the remittance information.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/RemittanceLocationData1"
+                            description: |
+                                RemittanceLocationDetails
+                                Set of elements used to provide information on the location and/or delivery of the remittance information.
+                        type: array
+        type: object
+    RemittanceLocationData1:
+        additionalProperties: false
+        description: |
+            RemittanceLocationData1
+            Provides additional details on the remittance advice.
+        properties:
+            ElctrncAdr:
+                $ref: "#/components/schemas/pain09/Max2048Text"
+                description: |
+                    ElectronicAddress
+                    Electronic address to which an agent is to send the remittance information.
+            Mtd:
+                $ref: "#/components/schemas/pain09/RemittanceLocationMethod2Code"
+                description: |
+                    Method
+                    Method used to deliver the remittance advice information.
+            PstlAdr:
+                $ref: "#/components/schemas/pain09/NameAndAddress16"
+                description: |
+                    PostalAddress
+                    Postal address to which an agent is to send the remittance information.
+        required:
+            - Mtd
+        type: object
+    RemittanceLocationMethod2Code:
+        description: |
+            RemittanceLocationMethod2Code
+            Specifies the method used to deliver the remittance advice information.
+        enum:
+            - FAXI
+            - EDIC
+            - URID
+            - EMAL
+            - POST
+            - SMSM
+        type: string
+    ServiceLevel8Choice:
+        additionalProperties: false
+        description: |
+            ServiceLevel8Choice
+            Specifies the service level of the transaction.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalServiceLevel1Code"
+                description: |
+                    Code
+                    Specifies a pre-agreed service or level of service between the parties, as published in an external service level code list.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Specifies a pre-agreed service or level of service between the parties, as a proprietary code.
+        type: object
+    StructuredRegulatoryReporting3:
+        additionalProperties: false
+        description: |
+            StructuredRegulatoryReporting3
+            Information needed due to regulatory and statutory requirements.
+        properties:
+            Amt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    Amount
+                    Amount of money to be reported for regulatory and statutory requirements.
+            Cd:
+                $ref: "#/components/schemas/pain09/Max10Text"
+                description: |
+                    Code
+                    Specifies the nature, purpose, and reason for the transaction to be reported for regulatory and statutory requirements in a coded form.
+            Ctry:
+                $ref: "#/components/schemas/pain09/CountryCode"
+                description: |
+                    Country
+                    Country related to the specified type of regulatory reporting details.
+            Dt:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    Date
+                    Date related to the specified type of regulatory reporting details.
+            Inf:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/Max35Text"
+                        description: |
+                            Information
+                            Additional details that cater for specific domestic regulatory requirements.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/Max35Text"
+                            description: |
+                                Information
+                                Additional details that cater for specific domestic regulatory requirements.
+                        type: array
+            Tp:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Type
+                    Specifies the type of the information supplied in the regulatory reporting details.
+        type: object
+    StructuredRemittanceInformation16:
+        additionalProperties: false
+        description: |
+            StructuredRemittanceInformation16
+            Information supplied to enable the matching/reconciliation of an entry with the items that the payment is intended to settle, such as commercial invoices in an accounts' receivable system, in a structured form.
+        properties:
+            AddtlRmtInf:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/Max140Text"
+                        description: |
+                            AdditionalRemittanceInformation
+                            Additional information, in free text form, to complement the structured remittance information.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/Max140Text"
+                            description: |
+                                AdditionalRemittanceInformation
+                                Additional information, in free text form, to complement the structured remittance information.
+                        maxItems: 3
+                        type: array
+            CdtrRefInf:
+                $ref: "#/components/schemas/pain09/CreditorReferenceInformation2"
+                description: |
+                    CreditorReferenceInformation
+                    Reference information provided by the creditor to allow the identification of the underlying documents.
+            GrnshmtRmt:
+                $ref: "#/components/schemas/pain09/Garnishment3"
+                description: |
+                    GarnishmentRemittance
+                    Provides remittance information about a payment for garnishment-related purposes.
+            Invcee:
+                $ref: "#/components/schemas/pain09/PartyIdentification135"
+                description: |
+                    Invoicee
+                    Identification of the party to whom an invoice is issued, when it is different from the debtor or ultimate debtor.
+            Invcr:
+                $ref: "#/components/schemas/pain09/PartyIdentification135"
+                description: |
+                    Invoicer
+                    Identification of the organisation issuing the invoice, when it is different from the creditor or ultimate creditor.
+            RfrdDocAmt:
+                $ref: "#/components/schemas/pain09/RemittanceAmount2"
+                description: |
+                    ReferredDocumentAmount
+                    Provides details on the amounts of the referred document.
+            RfrdDocInf:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/ReferredDocumentInformation7"
+                        description: |
+                            ReferredDocumentInformation
+                            Provides the identification and the content of the referred document.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/ReferredDocumentInformation7"
+                            description: |
+                                ReferredDocumentInformation
+                                Provides the identification and the content of the referred document.
+                        type: array
+            TaxRmt:
+                $ref: "#/components/schemas/pain09/TaxInformation7"
+                description: |
+                    TaxRemittance
+                    Provides remittance information about a payment made for tax-related purposes.
+        type: object
+    SupplementaryData1:
+        additionalProperties: false
+        description: |
+            SupplementaryData1
+            Additional information that can not be captured in the structured fields and/or any other specific block.
+        properties:
+            Envlp:
+                $ref: "#/components/schemas/pain09/SupplementaryDataEnvelope1"
+                description: |
+                    Envelope
+                    Technical element wrapping the supplementary data.
+            PlcAndNm:
+                $ref: "#/components/schemas/pain09/Max350Text"
+                description: |
+                    PlaceAndName
+                    Unambiguous reference to the location where the supplementary data must be inserted in the message instance.
+                    
+                    In the case of XML, this is expressed by a valid XPath.
+        required:
+            - Envlp
+        type: object
+    SupplementaryDataEnvelope1:
+        additionalProperties: false
+        description: |
+            SupplementaryDataEnvelope1
+            Technical component that contains the validated supplementary data information. This technical envelope allows to segregate the supplementary data information from any other information.
+        patternProperties:
+            ^\w+$: {}
+        type: object
+    TaxAmount2:
+        additionalProperties: false
+        description: |
+            TaxAmount2
+            Set of elements used to provide information on the tax amount(s) of tax record.
+        properties:
+            Dtls:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/TaxRecordDetails2"
+                        description: |
+                            Details
+                            Set of elements used to provide details on the tax period and amount.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/TaxRecordDetails2"
+                            description: |
+                                Details
+                                Set of elements used to provide details on the tax period and amount.
+                        type: array
+            Rate:
+                $ref: "#/components/schemas/pain09/PercentageRate"
+                description: |
+                    Rate
+                    Rate used to calculate the tax.
+            TaxblBaseAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    TaxableBaseAmount
+                    Amount of money on which the tax is based.
+            TtlAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    TotalAmount
+                    Total amount that is the result of the calculation of the tax for the record.
+        type: object
+    TaxAmountAndType1:
+        additionalProperties: false
+        description: |
+            TaxAmountAndType1
+            Specifies the amount with a specific type.
+        properties:
+            Amt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    Amount
+                    Amount of money, which has been typed.
+            Tp:
+                $ref: "#/components/schemas/pain09/TaxAmountType1Choice"
+                description: |
+                    Type
+                    Specifies the type of the amount.
+        required:
+            - Amt
+        type: object
+    TaxAmountType1Choice:
+        additionalProperties: false
+        description: |
+            TaxAmountType1Choice
+            Specifies the amount type.
+        properties:
+            Cd:
+                $ref: "#/components/schemas/pain09/ExternalTaxAmountType1Code"
+                description: |
+                    Code
+                    Specifies the amount type, in a coded form.
+            Prtry:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Proprietary
+                    Specifies the amount type, in a free-text form.
+        type: object
+    TaxAuthorisation1:
+        additionalProperties: false
+        description: |
+            TaxAuthorisation1
+            Details of the authorised tax paying party.
+        properties:
+            Nm:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    Name
+                    Name of the debtor or the debtor's authorised representative.
+            Titl:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Title
+                    Title or position of debtor or the debtor's authorised representative.
+        type: object
+    TaxInformation7:
+        additionalProperties: false
+        description: |
+            TaxInformation7
+            Details about tax paid, or to be paid, to the government in accordance with the law, including pre-defined parameters such as thresholds and type of account.
+        properties:
+            AdmstnZone:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    AdministrationZone
+                    Territorial part of a country to which the tax payment is related.
+            Cdtr:
+                $ref: "#/components/schemas/pain09/TaxParty1"
+                description: |
+                    Creditor
+                    Party on the credit side of the transaction to which the tax applies.
+            Dbtr:
+                $ref: "#/components/schemas/pain09/TaxParty2"
+                description: |
+                    Debtor
+                    Identifies the party on the debit side of the transaction to which the tax applies.
+            Dt:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    Date
+                    Date by which tax is due.
+            Mtd:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Method
+                    Method used to indicate the underlying business or how the tax is paid.
+            Rcrd:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/TaxRecord2"
+                        description: |
+                            Record
+                            Record of tax details.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/TaxRecord2"
+                            description: |
+                                Record
+                                Record of tax details.
+                        type: array
+            RefNb:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    ReferenceNumber
+                    Tax reference information that is specific to a taxing agency.
+            SeqNb:
+                $ref: "#/components/schemas/pain09/Number"
+                description: |
+                    SequenceNumber
+                    Sequential number of the tax report.
+            TtlTaxAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    TotalTaxAmount
+                    Total amount of money as result of the calculation of the tax.
+            TtlTaxblBaseAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    TotalTaxableBaseAmount
+                    Total amount of money on which the tax is based.
+            UltmtDbtr:
+                $ref: "#/components/schemas/pain09/TaxParty2"
+                description: |
+                    UltimateDebtor
+                    Ultimate party that owes an amount of money to the (ultimate) creditor, in this case, to the taxing authority.
+        type: object
+    TaxInformation8:
+        additionalProperties: false
+        description: |
+            TaxInformation8
+            Details about tax paid, or to be paid, to the government in accordance with the law, including pre-defined parameters such as thresholds and type of account.
+        properties:
+            AdmstnZone:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    AdministrationZone
+                    Territorial part of a country to which the tax payment is related.
+            Cdtr:
+                $ref: "#/components/schemas/pain09/TaxParty1"
+                description: |
+                    Creditor
+                    Party on the credit side of the transaction to which the tax applies.
+            Dbtr:
+                $ref: "#/components/schemas/pain09/TaxParty2"
+                description: |
+                    Debtor
+                    Party on the debit side of the transaction to which the tax applies.
+            Dt:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    Date
+                    Date by which tax is due.
+            Mtd:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Method
+                    Method used to indicate the underlying business or how the tax is paid.
+            Rcrd:
+                anyOf:
+                    -   $ref: "#/components/schemas/pain09/TaxRecord2"
+                        description: |
+                            Record
+                            Record of tax details.
+                    -   items:
+                            $ref: "#/components/schemas/pain09/TaxRecord2"
+                            description: |
+                                Record
+                                Record of tax details.
+                        type: array
+            RefNb:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    ReferenceNumber
+                    Tax reference information that is specific to a taxing agency.
+            SeqNb:
+                $ref: "#/components/schemas/pain09/Number"
+                description: |
+                    SequenceNumber
+                    Sequential number of the tax report.
+            TtlTaxAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    TotalTaxAmount
+                    Total amount of money as result of the calculation of the tax.
+            TtlTaxblBaseAmt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    TotalTaxableBaseAmount
+                    Total amount of money on which the tax is based.
+        type: object
+    TaxParty1:
+        additionalProperties: false
+        description: |
+            TaxParty1
+            Details about the entity involved in the tax paid or to be paid.
+        properties:
+            RegnId:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    RegistrationIdentification
+                    Unique identification, as assigned by an organisation, to unambiguously identify a party.
+            TaxId:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    TaxIdentification
+                    Tax identification number of the creditor.
+            TaxTp:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    TaxType
+                    Type of tax payer.
+        type: object
+    TaxParty2:
+        additionalProperties: false
+        description: |
+            TaxParty2
+            Details about the entity involved in the tax paid or to be paid.
+        properties:
+            Authstn:
+                $ref: "#/components/schemas/pain09/TaxAuthorisation1"
+                description: |
+                    Authorisation
+                    Details of the authorised tax paying party.
+            RegnId:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    RegistrationIdentification
+                    Unique identification, as assigned by an organisation, to unambiguously identify a party.
+            TaxId:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    TaxIdentification
+                    Tax identification number of the debtor.
+            TaxTp:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    TaxType
+                    Type of tax payer.
+        type: object
+    TaxPeriod2:
+        additionalProperties: false
+        description: |
+            TaxPeriod2
+            Period of time details related to the tax payment.
+        properties:
+            FrToDt:
+                $ref: "#/components/schemas/pain09/DatePeriod2"
+                description: |
+                    FromToDate
+                    Range of time between a start date and an end date for which the tax report is provided.
+            Tp:
+                $ref: "#/components/schemas/pain09/TaxRecordPeriod1Code"
+                description: |
+                    Type
+                    Identification of the period related to the tax payment.
+            Yr:
+                $ref: "#/components/schemas/pain09/ISODate"
+                description: |
+                    Year
+                    Year related to the tax payment.
+        type: object
+    TaxRecord2:
+        additionalProperties: false
+        description: |
+            TaxRecord2
+            Set of elements used to define the tax record.
+        properties:
+            AddtlInf:
+                $ref: "#/components/schemas/pain09/Max140Text"
+                description: |
+                    AdditionalInformation
+                    Further details of the tax record.
+            CertId:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    CertificateIdentification
+                    Identification number of the tax report as assigned by the taxing authority.
+            Ctgy:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Category
+                    Specifies the tax code as published by the tax authority.
+            CtgyDtls:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    CategoryDetails
+                    Provides further details of the category tax code.
+            DbtrSts:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    DebtorStatus
+                    Code provided by local authority to identify the status of the party that has drawn up the settlement document.
+            FrmsCd:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    FormsCode
+                    Identifies, in a coded form, on which template the tax report is to be provided.
+            Prd:
+                $ref: "#/components/schemas/pain09/TaxPeriod2"
+                description: |
+                    Period
+                    Set of elements used to provide details on the period of time related to the tax payment.
+            TaxAmt:
+                $ref: "#/components/schemas/pain09/TaxAmount2"
+                description: |
+                    TaxAmount
+                    Set of elements used to provide information on the amount of the tax record.
+            Tp:
+                $ref: "#/components/schemas/pain09/Max35Text"
+                description: |
+                    Type
+                    High level code to identify the type of tax details.
+        type: object
+    TaxRecordDetails2:
+        additionalProperties: false
+        description: |
+            TaxRecordDetails2
+            Provides information on the individual tax amount(s) per period of the tax record.
+        properties:
+            Amt:
+                $ref: "#/components/schemas/pain09/ActiveOrHistoricCurrencyAndAmount"
+                description: |
+                    Amount
+                    Underlying tax amount related to the specified period.
+            Prd:
+                $ref: "#/components/schemas/pain09/TaxPeriod2"
+                description: |
+                    Period
+                    Set of elements used to provide details on the period of time related to the tax payment.
+        required:
+            - Amt
+        type: object
+    TaxRecordPeriod1Code:
+        description: |
+            TaxRecordPeriod1Code
+            Specifies the period related to the tax payment.
+        enum:
+            - MM01
+            - MM02
+            - MM03
+            - MM04
+            - MM05
+            - MM06
+            - MM07
+            - MM08
+            - MM09
+            - MM10
+            - MM11
+            - MM12
+            - QTR1
+            - QTR2
+            - QTR3
+            - QTR4
+            - HLF1
+            - HLF2
+        type: string
+    TrueFalseIndicator:
+        description: |
+            TrueFalseIndicator
+            A flag indicating a True or False value.
+        type: boolean
+    UUIDv4Identifier:
+        description: |
+            UUIDv4Identifier
+            Universally Unique IDentifier (UUID) version 4, as described in IETC RFC 4122 "Universally Unique IDentifier (UUID) URN Namespace".
+        pattern: ^([0-9a-f]{8,8}\-[0-9a-f]{4,4}\-4[0-9a-f]{3,3}\-[8-9a-b][0-9a-f]{3,3}\-[0-9a-f]{12,12})$
+        type: string
+description: JSON Schema generated by XMLSpy v2024 rel. 2 (x64) (https://www.altova.com)
+properties:
+    "@xmlns:n1":
+        default: urn:iso:std:iso:20022:tech:xsd:pain.001.001.09
+    Document:
+        $ref: "#/components/schemas/pain09/.Document"
+type: object
